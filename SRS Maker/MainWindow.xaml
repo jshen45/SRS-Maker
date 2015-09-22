@@ -1,0 +1,26 @@
+﻿<Controls:MetroWindow x:Class="SRS_Maker.MainWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:View="clr-namespace:SRS_Maker.View"
+                      Title="SRS Maker"
+                      Height="950"
+                      Width="1350">
+    <Grid>
+        <TabControl Name="tabControl1" Margin="0,0,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top">
+            <TabItem Header="PROJECT">
+                <View:PROJECT />
+            </TabItem>
+            <TabItem Header="MCU FBL OS CORE EEPROM">
+                <View:MCU_FBL_OS_CORE_EEPROM />
+            </TabItem>
+            <TabItem Header="IO">
+                <View:IO />
+            </TabItem>
+            <TabItem Header="CAN SPI ASC UDS">
+                <View:CAN_UDS_SPI_ASC />
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Controls:MetroWindow>
+
