@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\mcu.cs" />
     <Compile Include="View\CAN_UDS_SPI_ASC.xaml.cs">
       <DependentUpon>CAN_UDS_SPI_ASC.xaml</DependentUpon>
     </Compile>
