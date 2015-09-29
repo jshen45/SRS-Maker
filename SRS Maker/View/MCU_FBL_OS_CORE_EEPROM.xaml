@@ -1,14 +1,15 @@
-﻿<UserControl x:Class="SRS_Maker.View.MCU_FBL_OS_CORE_EEPROM"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Model="clr-namespace:SRS_Maker.Model" x:Class="SRS_Maker.View.MCU_FBL_OS_CORE_EEPROM" 
              mc:Ignorable="d">
     <Grid>
         <GroupBox Header="FBL" HorizontalAlignment="Left" Margin="171,0,0,0" VerticalAlignment="Top" Width="328" Height="258">
             <Grid>
                 <Label Content="ST Min" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.385,0.846"/>
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="63,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="1.092,0.577"/>
+                <TextBox HorizontalAlignment="Left" Height="23" Margin="63,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
                 <Rectangle HorizontalAlignment="Left" Height="158" Margin="10,51,0,0" Stroke="LightGray" StrokeThickness="0.5" VerticalAlignment="Top" Width="296"/>
                 <Label Content="SW Version" HorizontalAlignment="Left" Margin="96,62,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.385,0.846"/>
                 <TextBox HorizontalAlignment="Left" Height="23" Margin="172,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -23,8 +24,8 @@
 
         <GroupBox Header="Memory Mapping" HorizontalAlignment="Left" Margin="504,0,0,0" VerticalAlignment="Top" Width="328" Height="160">
             <Grid>
-                <Label Content="Boot Address" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                <ComboBox HorizontalAlignment="Left" Margin="98,10,0,0" VerticalAlignment="Top" Width="208"/>
+                <Label Content="Boot Location" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <ComboBox HorizontalAlignment="Left" Margin="101,10,0,0" VerticalAlignment="Top" Width="205" ItemsSource="{Binding BootAddressList}" SelectedItem="{Binding selectedBootAddressL}"/>
                 <Label Content="Security-Key Address(hex)" HorizontalAlignment="Left" Margin="10,54,0,0" VerticalAlignment="Top"/>
                 <Label Content="Identification Address(hex)" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top"/>
                 <TextBox HorizontalAlignment="Left" Height="23" Margin="170,53,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
@@ -32,11 +33,11 @@
             </Grid>
         </GroupBox>
         <GroupBox Header="MCU" HorizontalAlignment="left" Margin="0" VerticalAlignment="Top" Height="439" Width="166">
-            <Grid>
+            <Grid >
                 <Label Content="MCU" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="76" Margin="10,5,0,0"/>
-                <ComboBox HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="120" Height="26"  ItemsSource="{Binding test}" SelectedItem="{Binding selectedMcu}"/>
-                <Label Content="Pin Package" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top" Height="26" Width="76"/>
-                <ComboBox HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
+                <ComboBox x:Name="ComboBox_MCU" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="120" Height="26" ItemsSource="{Binding mcuList}" SelectedItem="{Binding selectedMcu}" DisplayMemberPath ="Name" SelectionChanged="SelectedMcuUpdate"/>
+                <Label Content="Pin Package" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top" Height="26" Width="76" />
+                <ComboBox x:Name="PinCombo" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Width="120" Height="26" ItemsSource="{Binding PinPackage}"/>
                 <Label Content="Quartz Clock" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Height="26" Width="80"/>
                 <TextBox HorizontalAlignment="Left" Height="26" Margin="10,156,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
                 <Label Content="Core Clock" HorizontalAlignment="Left" Margin="10,182,0,0" VerticalAlignment="Top" Height="26" Width="69"/>
@@ -61,15 +62,15 @@
                 <TextBox HorizontalAlignment="Left" Height="23" Margin="72,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="ASW Tasks" HorizontalAlignment="Left" Margin="194,444,-5,-264" VerticalAlignment="Top" Height="420" Width="767">
-            <DataGrid HorizontalAlignment="Left" Margin="10,8,0,0" VerticalAlignment="Top" Height="364" Width="738" BorderThickness="1" BorderBrush="LightGray">
+        <GroupBox Header="ASW Tasks" HorizontalAlignment="Left" Margin="189,266,0,-86" VerticalAlignment="Top" Height="420" Width="767">
+            <DataGrid HorizontalAlignment="Left" Margin="8,8,0,0" VerticalAlignment="Top" Height="364" Width="738" BorderThickness="1" BorderBrush="LightGray" ItemsSource="{Binding Source=SwpTaskList}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                     <DataGridTextColumn Header="Priority" Binding="{Binding Priority}"/>
                     <DataGridTextColumn Header="Preemptive" Binding="{Binding Preemptive}"/>
                     <DataGridTextColumn Header="Auto Start" Binding="{Binding AutoStart}"/>
                     <DataGridCheckBoxColumn Header="Alarm" ElementStyle="{DynamicResource MetroDataGridCheckBox}" EditingElementStyle="{DynamicResource MetroDataGridCheckBox}"
-        				Binding="{Binding IsSelected, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"/>
+						Binding="{Binding IsSelected, Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"/>
                     <DataGridTextColumn Header="Alarm-Name" Binding="{Binding AlarmName}"/>
                     <DataGridTextColumn Header="Alarm-Offset" Binding="{Binding AlarmOffset}"/>
                     <DataGridTextColumn Header="Alarm-Cycle" Binding="{Binding AlarmCycle}"/>
@@ -78,16 +79,16 @@
         </GroupBox>
         <GroupBox Header="EEPROM" HorizontalAlignment="Left" Margin="837,0,-203,0" VerticalAlignment="Top" Width="322" Height="285">
             <Grid>
-                <RadioButton Content="Interanl EEPROM" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                <Label Content="EEPROM Size(byte)" HorizontalAlignment="Left" Margin="28,33,0,0" VerticalAlignment="Top"/>
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="146,34,0,0" TextWrapping="Wrap" Text="4096" VerticalAlignment="Top" Width="51"/>
-                <RadioButton Content="External EEPROM" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top"/>
-                <Label Content="EEPROM IC" HorizontalAlignment="Left" Margin="29,98,0,0" VerticalAlignment="Top"/>
-                <ComboBox HorizontalAlignment="Left" Margin="106,129,0,0" VerticalAlignment="Top" Width="61"/>
-                <Label Content="SPI Channel" HorizontalAlignment="Left" Margin="29,129,0,0" VerticalAlignment="Top"/>
-                <ComboBox HorizontalAlignment="Left" Margin="106,98,0,0" VerticalAlignment="Top" Width="142"/>
-                <Label Content="CS Pin" HorizontalAlignment="Left" Margin="172,129,0,0" VerticalAlignment="Top"/>
-                <ComboBox HorizontalAlignment="Left" Margin="222,129,0,0" VerticalAlignment="Top" Width="79"/>
+                <RadioButton x:Name="RadioBtn_InternalEEPROM" Content="Interanl EEPROM" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                <Label Content="EEPROM Size(byte)" HorizontalAlignment="Left" Margin="28,33,0,0" VerticalAlignment="Top" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_InternalEEPROM}"/>
+                <TextBox x:Name="Text_InternalE2PRomSize" HorizontalAlignment="Left" Height="23" Margin="146,34,0,0" TextWrapping="Wrap" Text="4096" VerticalAlignment="Top" Width="51" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_InternalEEPROM}"/>
+                <RadioButton x:Name="RadioBtn_ExternalE2PRom" Content="External EEPROM" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" />
+                <Label Content="EEPROM IC" HorizontalAlignment="Left" Margin="29,98,0,0" VerticalAlignment="Top" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_ExternalE2PRom}"/>
+                <ComboBox HorizontalAlignment="Left" Margin="106,129,0,0" VerticalAlignment="Top" Width="61" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_ExternalE2PRom}"/>
+                <Label Content="SPI Channel" HorizontalAlignment="Left" Margin="29,129,0,0" VerticalAlignment="Top" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_ExternalE2PRom}"/>
+                <ComboBox x:Name="externalEEPROM" HorizontalAlignment="Left" Margin="106,98,0,0" VerticalAlignment="Top" Width="142" ItemsSource="{Binding externalE2PRomList}" SelectedItem="{Binding selectedExternalE2PRom}" DisplayMemberPath ="Name" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_ExternalE2PRom}"/>
+                <Label Content="CS Pin" HorizontalAlignment="Left" Margin="172,129,0,0" VerticalAlignment="Top" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_ExternalE2PRom}"/>
+                <ComboBox HorizontalAlignment="Left" Margin="222,130,0,0" VerticalAlignment="Top" Width="79" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_ExternalE2PRom}"/>
                 <Rectangle  HorizontalAlignment="Left" Height="65" Margin="10,171,0,0" Stroke="LightGray" VerticalAlignment="Top" Width="292" StrokeThickness="0.5"/>
                 <CheckBox Content="EEPROM Erase function" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,207,0,0" IsChecked="True"/>
                 <CheckBox Content="Reduced EEPROM Management;" HorizontalAlignment="Left" Margin="21,183,0,0" VerticalAlignment="Top"/>
@@ -95,10 +96,10 @@
         </GroupBox>
         <GroupBox Header="Debugging Feature" HorizontalAlignment="left" Margin="967,444,-201,0" VerticalAlignment="Top" Height="154" Width="190">
             <Grid>
-                <CheckBox Content="CPU Load" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                <CheckBox Content="IT Load" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top"/>
-                <CheckBox Content="Stack Depth" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top"/>
-                <CheckBox Content="Task Monitoring" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top"/>
+                <CheckBox x:Name="CpuLoad" Content="CPU Load" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <CheckBox x:Name="ItLoad" Content="IT Load" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top"/>
+                <CheckBox x:Name="StackDepth" Content="Stack Depth" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top"/>
+                <CheckBox x:Name="TaskMonitoring" Content="Task Monitoring" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
         <GroupBox Header="Watchdog Manager" HorizontalAlignment="Left" Margin="967,603,-387,-141" VerticalAlignment="Top" Height="138" Width="376">

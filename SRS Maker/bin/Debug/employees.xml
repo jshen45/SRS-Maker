@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Config>
+  <DefaultMcuConfig>
+    <MCU>SRS_Maker.Model.Mcu</MCU>
+    <PinPackage>100 Pin</PinPackage>
+  </DefaultMcuConfig>
+  <Debugging>
+    <CpuLoad>False</CpuLoad>
+    <ItLoad>False</ItLoad>
+    <StackDepth>False</StackDepth>
+    <TaskMonitoring>False</TaskMonitoring>
+    <FblConfig>
+      <STmin>5</STmin>
+    </FblConfig>
+  </Debugging>
+</Config>

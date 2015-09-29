@@ -6,49 +6,56 @@ using System.Threading.Tasks;
 
 namespace SRS_Maker.Model
 {
-    public class mcu
+    public class Mcu
     {
-        private string name;
-        private string classification;
-        private string pflashStartAddress;
-        private string pflashEndAddress;
-        private string dflashStartAddress;
-        private string dflashEndAddress;
-        private string ramStartAddress;
-        private string ramEndAddress;
-
-        public mcu(string name)
+        public Mcu(string name)
         {
-            this.name = name;
-            this.classification = "";
-            this.pflashStartAddress = "";
-            this.pflashEndAddress = "";
-            this.dflashStartAddress = "";
-            this.dflashEndAddress = "";
-            this.ramStartAddress = "";
-            this.ramEndAddress = "";
+            this.Name = name;
+            this.Classification = "";
+            this.PinPackage = null;
+            this.PflashStartAddress = "";
+            this.PflashEndAddress = "";
+            this.DflashStartAddress = "";
+            this.DflashEndAddress = "";
+            this.RamStartAddress = "";
+            this.RamEndAddress = "";
         }
 
-        public mcu(string name, string classification, string pflashStartAddress, string pflashEndAddress, string dflashStartAddress, string dflashEndAddress, string ramStartAddress, string ramEndAddress)
+        public Mcu(string name, List<string> pinPackage)
         {
-            this.name = name;
-            this.classification = classification;
-            this.pflashStartAddress = pflashStartAddress;
-            this.pflashEndAddress = pflashEndAddress;
-            this.dflashStartAddress = dflashStartAddress;
-            this.dflashEndAddress = dflashEndAddress;
-            this.ramStartAddress = ramStartAddress;
-            this.ramEndAddress = ramEndAddress;
+            this.Name = name;
+            this.Classification = "";
+            this.PinPackage = pinPackage;
+            this.PflashStartAddress = "";
+            this.PflashEndAddress = "";
+            this.DflashStartAddress = "";
+            this.DflashEndAddress = "";
+            this.RamStartAddress = "";
+            this.RamEndAddress = "";
+        }
+
+        public Mcu(string name, string classification, List<string> pinPackage,  string pflashStartAddress, string pflashEndAddress, string dflashStartAddress, string dflashEndAddress, string ramStartAddress, string ramEndAddress)
+        {
+            this.Name = name;
+            this.Classification = classification;
+            this.PinPackage = pinPackage;
+            this.PflashStartAddress = pflashStartAddress;
+            this.PflashEndAddress = pflashEndAddress;
+            this.DflashStartAddress = dflashStartAddress;
+            this.DflashEndAddress = dflashEndAddress;
+            this.RamStartAddress = ramStartAddress;
+            this.RamEndAddress = ramEndAddress;
         }
         
-        public string Name{get; set;} 
-        public string Classification{get; set;} 
-        public string PflashStartAddress{get; set;} 
-        public string PflashEndAddress{get; set;} 
-        public string DflashStartAddress{get; set;} 
-        public string DflashEndAddress{get; set;} 
-        public string RamStartAddress{get; set;} 
-        public string RamEndAddress{get; set;} 
+        public string Name { get; set; } 
+        public string Classification { get; set; } 
+        public List<string> PinPackage { get; set; }
+        public string PflashStartAddress { get; set; } 
+        public string PflashEndAddress { get; set; } 
+        public string DflashStartAddress { get; set; } 
+        public string DflashEndAddress { get; set; } 
+        public string RamStartAddress { get; set; } 
+        public string RamEndAddress { get; set; } 
         
      }
 }

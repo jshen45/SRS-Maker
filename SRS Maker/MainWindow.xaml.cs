@@ -18,9 +18,16 @@ namespace SRS_Maker
 {
     public partial class MainWindow : MetroWindow
     {
+        private XmlGenerator xmlGenerator { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void XmlGenerate(object sender, RoutedEventArgs e)
+        {
+            xmlGenerator = new XmlGenerator(general_tab, io_tab, com_tab);
         }
     }
 }
