@@ -1,30 +1,3 @@
-c:\users\administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\bin\Debug\SRS Maker.exe.config
-c:\users\administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\bin\Debug\SRS Maker.exe
-c:\users\administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\bin\Debug\SRS Maker.pdb
-c:\users\administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\bin\Debug\MahApps.Metro.dll
-c:\users\administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\bin\Debug\System.Windows.Interactivity.dll
-c:\users\administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\bin\Debug\MahApps.Metro.xml
-c:\users\administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS Maker.csprojResolveAssemblyReference.cache
-c:\users\administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\MainWindow.baml
-c:\users\administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\App.baml
-c:\users\administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\MainWindow.g.cs
-c:\users\administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\App.g.cs
-c:\users\administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS Maker_MarkupCompile.cache
-c:\users\administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS Maker.g.resources
-c:\users\administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS_Maker.Properties.Resources.resources
-c:\users\administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS Maker.csproj.GenerateResource.Cache
-c:\users\administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS Maker.exe
-c:\users\administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS Maker.pdb
-C:\Users\Administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\Administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS Maker_MarkupCompile.lref
-C:\Users\Administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\View\IO.baml
-C:\Users\Administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\View\IO.g.cs
-C:\Users\Administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\View\CAN_UDS_SPI_ASC.baml
-C:\Users\Administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\View\CAN_UDS_SPI_ASC.g.cs
-C:\Users\Administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\View\MCU_FBL_OS_CORE_EEPROM.baml
-C:\Users\Administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\View\MCU_FBL_OS_CORE_EEPROM.g.cs
-C:\Users\Administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\View\PROJECT.baml
-C:\Users\Administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\View\PROJECT.g.cs
 C:\Users\minu\SRS-Maker\SRS Maker\bin\Debug\SRS Maker.exe.config
 C:\Users\minu\SRS-Maker\SRS Maker\obj\Debug\SRS Maker.exe
 C:\Users\minu\SRS-Maker\SRS Maker\obj\Debug\SRS Maker.pdb
@@ -52,3 +25,32 @@ C:\Users\minu\SRS-Maker\SRS Maker\obj\Debug\MainWindow.baml
 C:\Users\minu\SRS-Maker\SRS Maker\obj\Debug\SRS Maker.g.resources
 C:\Users\minu\SRS-Maker\SRS Maker\obj\Debug\SRS_Maker.Properties.Resources.resources
 C:\Users\minu\SRS-Maker\SRS Maker\obj\Debug\SRS Maker.csproj.GenerateResource.Cache
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\View\CAN_UDS_SPI_ASC.baml
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\View\IO.baml
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\View\OS_CORE.baml
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\View\PROJECT.baml
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\App.baml
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\MainWindow.g.cs
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\View\CAN_UDS_SPI_ASC.g.cs
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\View\IO.g.cs
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\View\MCU_FBL_MEM.g.cs
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\View\OS_CORE.g.cs
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\View\PROJECT.g.cs
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\App.g.cs
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS Maker_MarkupCompile.cache
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS Maker_MarkupCompile.lref
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\bin\Debug\SRS Maker.exe.config
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\bin\Debug\SRS Maker.exe
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\bin\Debug\SRS Maker.pdb
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\bin\Debug\MahApps.Metro.dll
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\bin\Debug\MahApps.Metro.xml
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\MainWindow.baml
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\View\MCU_FBL_MEM.baml
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS Maker.g.resources
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS_Maker.Properties.Resources.resources
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS Maker.csproj.GenerateResource.Cache
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS Maker.exe
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS Maker.pdb
+C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS Maker.csprojResolveAssemblyReference.cache

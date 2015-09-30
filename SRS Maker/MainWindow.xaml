@@ -11,8 +11,11 @@
             <TabItem Header="PROJECT">
                 <View:PROJECT />
             </TabItem>
-            <TabItem Header="MCU FBL OS CORE EEPROM">
-                <View:MCU_FBL_OS_CORE_EEPROM x:Name="general_tab"/>
+            <TabItem Header="MCU FBL MEM">
+                <View:MCU_FBL_MEM x:Name="general_tab"/>
+            </TabItem>
+            <TabItem Header="OS CORE">
+                <View:OS_CORE x:Name="os_tab"/>
             </TabItem>
             <TabItem Header="IO">
                 <View:IO x:Name="io_tab"/>

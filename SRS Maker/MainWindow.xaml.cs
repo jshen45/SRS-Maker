@@ -27,7 +27,7 @@ namespace SRS_Maker
 
         private void XmlGenerate(object sender, RoutedEventArgs e)
         {
-            xmlGenerator = new XmlGenerator(general_tab, io_tab, com_tab);
+            xmlGenerator = new XmlGenerator(general_tab, os_tab, io_tab, com_tab);
         }
     }
 }

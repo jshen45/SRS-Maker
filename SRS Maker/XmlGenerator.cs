@@ -10,11 +10,12 @@ namespace SRS_Maker
 {
     class XmlGenerator
     {
-        private CAN_UDS_SPI_ASC com_tab;
-        private MCU_FBL_OS_CORE_EEPROM general_tab;
+        private MCU_FBL_MEM general_tab;
+        private OS_CORE os_tab;
         private IO io_tab;
-      
-        public XmlGenerator(MCU_FBL_OS_CORE_EEPROM general_tab, IO io_tab, CAN_UDS_SPI_ASC com_tab)
+        private CAN_UDS_SPI_ASC com_tab;
+
+        public XmlGenerator(MCU_FBL_MEM general_tab, OS_CORE os_tab, IO io_tab, CAN_UDS_SPI_ASC com_tab)
         {
             this.general_tab = general_tab;
             this.io_tab = io_tab;
@@ -34,6 +35,7 @@ namespace SRS_Maker
                     {
                         writer.WriteStartElement("DefaultMcuConfig");
                         {
+
                             writer.WriteElementString("MCU", general_tab.ComboBox_MCU.SelectedValue.ToString());
                             writer.WriteElementString("PinPackage", general_tab.PinCombo.SelectedValue.ToString());
                         }
@@ -41,10 +43,10 @@ namespace SRS_Maker
 
                         writer.WriteStartElement("Debugging");
                         {
-                            writer.WriteElementString("CpuLoad", general_tab.CpuLoad.IsChecked.ToString());
-                            writer.WriteElementString("ItLoad", general_tab.ItLoad.IsChecked.ToString());
-                            writer.WriteElementString("StackDepth", general_tab.StackDepth.IsChecked.ToString());
-                            writer.WriteElementString("TaskMonitoring", general_tab.TaskMonitoring.IsChecked.ToString());
+                            writer.WriteElementString("CpuLoad", os_tab.CpuLoad.IsChecked.ToString());
+                            writer.WriteElementString("ItLoad", os_tab.ItLoad.IsChecked.ToString());
+                            writer.WriteElementString("StackDepth", os_tab.StackDepth.IsChecked.ToString());
+                            writer.WriteElementString("TaskMonitoring", os_tab.TaskMonitoring.IsChecked.ToString());
                         }
 
                         writer.WriteStartElement("FblConfig");

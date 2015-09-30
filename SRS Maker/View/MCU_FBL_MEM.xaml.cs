@@ -18,30 +18,22 @@ using System.Windows.Shapes;
 
 namespace SRS_Maker.View
 {
-    public partial class MCU_FBL_OS_CORE_EEPROM : UserControl
+    public partial class MCU_FBL_MEM : UserControl
     {
-        public ObservableCollection<Mcu> mcuList { get; set; }
-        public Mcu selectedMcu { get; set; }
-
-        public ObservableCollection<ExternalE2PRom> externalE2PRomList { get; set; }
-        public ExternalE2PRom selectedExternalE2PRom { get; set; }
-
-        public ObservableCollection<string> BootAddressList { get; set; }
-        public string selectedBootAddress { get; set; }
-
-        public ObservableCollection<SwpTask> SwpTaskList {get; set;}
-        
-        public MCU_FBL_OS_CORE_EEPROM()
+        public MCU_FBL_MEM()
         {
-            InitializeComponent();
-
             InitializeMcuList();
             InitializeExternalE2PRomList();
             InitializeBootAddressList();
-
+            
             DataContext = this;
+
+            InitializeComponent();
         }
 
+        #region combobox_itemsource
+
+        public ObservableCollection<Mcu> mcuList { get; set; }
         private void InitializeMcuList()
         {
             mcuList = new ObservableCollection<Mcu>();
@@ -53,14 +45,15 @@ namespace SRS_Maker.View
             mcuList.Add(new Mcu("MPC5607", new List<string> { "100 Pin" }));
         }
 
+        public ObservableCollection<ExternalE2PRom> externalE2PRomList { get; set; }
         private void InitializeExternalE2PRomList()
         {
             externalE2PRomList = new ObservableCollection<ExternalE2PRom>();
 
-            externalE2PRomList.Add(new ExternalE2PRom() { Name = "EEPROM Chip1", Size = "", Budrate = "", PolPolarityPhase = "" });
-            externalE2PRomList.Add(new ExternalE2PRom() { Name = "EEPROM Chip2", Size = "", Budrate = "", PolPolarityPhase = "" });
+            externalE2PRomList.Add(new ExternalE2PRom() { Name = "NOT Ready", Size = "", Budrate = "", PolPolarityPhase = "" });
         }
 
+        public ObservableCollection<string> BootAddressList { get; set; }
         private void InitializeBootAddressList()
         {
             BootAddressList = new ObservableCollection<string>();
@@ -68,19 +61,24 @@ namespace SRS_Maker.View
             BootAddressList.Add("0x0000~0x8000");
             BootAddressList.Add("0x8000~0xC000");
         }
+      
+        
+        
+        #endregion
 
-        private void InitializeTaskList()
-        {
-            SwpTaskList = new ObservableCollection<SwpTask>();
+        #region combobox_selected_item
 
-            SwpTaskList.Add(new SwpTask() { Name = "SWP10ms", AlarmCycle = 10, AlarmName = "SWP10msAlarm", AutoStart = false, IsSelected = true, AlarmOffset = 1, Preemptive = false, Priority = 100 });
-            SwpTaskList.Add(new SwpTask() { Name = "SWP20ms", AlarmCycle = 15, AlarmName = "SWP20msAlarm", AutoStart = false, IsSelected = true, AlarmOffset = 2, Preemptive = false, Priority = 150 });
-            SwpTaskList.Add(new SwpTask() { Name = "SWP100ms", AlarmCycle = 20, AlarmName = "SWP100msAlarm", AutoStart = false, IsSelected = true, AlarmOffset = 3, Preemptive = false, Priority = 101 });
-        }
+        public Mcu selectedMcu { get; set; }
+        public ExternalE2PRom selectedExternalE2PRom { get; set; }
+        public string selectedBootAddress { get; set; }
 
+        #endregion
+
+        #region component_callback
         private void SelectedMcuUpdate(object sender, SelectionChangedEventArgs e)
         {
             PinCombo.DataContext = selectedMcu;
         }
+        #endregion
     }
 }

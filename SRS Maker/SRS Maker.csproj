@@ -62,6 +62,9 @@
     <Compile Include="Model\ExternalE2PRom.cs" />
     <Compile Include="Model\Pins.cs" />
     <Compile Include="Model\SwpTask.cs" />
+    <Compile Include="View\OS_CORE.xaml.cs">
+      <DependentUpon>OS_CORE.xaml</DependentUpon>
+    </Compile>
     <Compile Include="XmlGenerator.cs" />
     <Compile Include="Model\Mcu.cs" />
     <Compile Include="View\CAN_UDS_SPI_ASC.xaml.cs">
@@ -70,8 +73,8 @@
     <Compile Include="View\IO.xaml.cs">
       <DependentUpon>IO.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MCU_FBL_OS_CORE_EEPROM.xaml.cs">
-      <DependentUpon>MCU_FBL_OS_CORE_EEPROM.xaml</DependentUpon>
+    <Compile Include="View\MCU_FBL_MEM.xaml.cs">
+      <DependentUpon>MCU_FBL_MEM.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PROJECT.xaml.cs">
       <DependentUpon>PROJECT.xaml</DependentUpon>
@@ -96,7 +99,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MCU_FBL_OS_CORE_EEPROM.xaml">
+    <Page Include="View\MCU_FBL_MEM.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\OS_CORE.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
