@@ -19,37 +19,40 @@ namespace SRS_Maker.View
 {
     public partial class MCU_FBL_OS_CORE_EEPROM : UserControl
     {
-        ObservableCollection<mcuName> mcu_list = new ObservableCollection<mcuName>();
-        string test;
-        string selectedMcu;
+        public List<string> mcuname_list
+        {
+            get
+            {
+                //return mcu_list.OfType<string>().ToList();
+                return mcu_list.
+            }
+            
+        }
 
-        
+        private List<mcuName> mcu_list;
+       
         public MCU_FBL_OS_CORE_EEPROM()
         {
             InitializeComponent();
 
-            this.mcu_list = new ObservableCollection<mcuName>();
+            this.mcu_list = new List<mcuName>();
 
             mcu_list.Add(new mcuName("MPC5603"));
             mcu_list.Add(new mcuName("MPC5604"));
             mcu_list.Add(new mcuName("MPC5605"));
             mcu_list.Add(new mcuName("MPC5606"));
             mcu_list.Add(new mcuName("MPC5607"));
-            this.test = "aaa";
-            test = "bbb";
-            selectedMcu = "djfk";
+
+            DataContext = this;
         }
     }
 
     public class mcuName
     {
-        public string name;
-
-        public mcuName(string name)
+        public string name
         {
-            this.name = name;
+            get;
+            set;
         }
-
-
     }
 }

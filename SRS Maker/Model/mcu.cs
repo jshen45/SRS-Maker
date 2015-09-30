@@ -41,14 +41,45 @@ namespace SRS_Maker.Model
             this.ramEndAddress = ramEndAddress;
         }
         
-        public string Name{get; set;} 
-        public string Classification{get; set;} 
-        public string PflashStartAddress{get; set;} 
-        public string PflashEndAddress{get; set;} 
-        public string DflashStartAddress{get; set;} 
-        public string DflashEndAddress{get; set;} 
-        public string RamStartAddress{get; set;} 
-        public string RamEndAddress{get; set;} 
-        
-     }
+        public string Name
+        {
+            get{ return name;  }
+            set{ name = value; } 
+        }
+        public string Classification
+        {
+            get{ return classification;  }
+            set{ classification = value; }
+        } 
+        public string PflashStartAddress
+        {
+            get{ return pflashStartAddress;  }
+            set{ pflashStartAddress = value; }
+        } 
+        public string PflashEndAddress
+        {
+            get{ return pflashEndAddress;  }
+            set{ pflashEndAddress = value; }
+        } 
+        public string DflashStartAddress
+        {
+            get{ return dflashStartAddress;  }
+            set{ dflashStartAddress = value; }
+        } 
+        public string DflashEndAddress
+        {
+            get{ return dflashEndAddress;  }
+            set{ dflashEndAddress = value; }
+        } 
+        public string RamStartAddress
+        {
+            get{ return ramStartAddress;  }
+            set{ ramStartAddress = value; }
+        } 
+        public string RamEndAddress
+        {
+            get{ return ramEndAddress;  }
+            set{ ramEndAddress = value; }
+        } 
+    }
 }

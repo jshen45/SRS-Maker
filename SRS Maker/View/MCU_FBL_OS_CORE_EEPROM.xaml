@@ -34,7 +34,7 @@
         <GroupBox Header="MCU" HorizontalAlignment="left" Margin="0" VerticalAlignment="Top" Height="439" Width="166">
             <Grid>
                 <Label Content="MCU" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="76" Margin="10,5,0,0"/>
-                <ComboBox HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="120" Height="26"  ItemsSource="{Binding test}" SelectedItem="{Binding selectedMcu}"/>
+                <ComboBox HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="504" Height="26" DataContext="{Binding mcu_list}" ItemsSource="{Binding}"/>
                 <Label Content="Pin Package" HorizontalAlignment="Left" Margin="10,57,0,0" VerticalAlignment="Top" Height="26" Width="76"/>
                 <ComboBox HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Width="120" Height="26"/>
                 <Label Content="Quartz Clock" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" Height="26" Width="80"/>
