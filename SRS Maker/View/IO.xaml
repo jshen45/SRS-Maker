@@ -3,34 +3,145 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d">
+             mc:Ignorable="d" >
     <Grid>
-        <GroupBox Header="IO General" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="261" Height="206">
+        <GroupBox Header="IO General" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="870" Height="210">
             <Grid>
-                <CheckBox Content="Analog Inputs" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                <CheckBox Content="Digital Inputs" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                <CheckBox Content="Digital Outputs" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                <CheckBox Content="Fast Digital Inputs" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                <CheckBox Content="Virtual Inputs" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                <Label Content="Multiple Activation Delay(us)" HorizontalAlignment="Left" Margin="7,132,0,0" VerticalAlignment="Top"/>
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="178,133,0,0" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Width="50"/>
+                <Grid Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >
+                    <CheckBox Content="Analog Inputs" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                    <CheckBox Content="Digital Inputs" HorizontalAlignment="Left" Margin="0,25,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                    <CheckBox Content="Digital Outputs" HorizontalAlignment="Left" Margin="0,50,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                    <CheckBox Content="Fast Digital Inputs" HorizontalAlignment="Left" Margin="0,75,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                    <CheckBox Content="Virtual Inputs" HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                    <Label Content="Multiple Activation Delay(us)" HorizontalAlignment="Left" Margin="-5,120,0,0" VerticalAlignment="Top"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="162,121,0,-1" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Width="50"/>
+                </Grid>
+                <Grid Margin="235,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Rectangle Margin="0,0,0,0" Width="615" Height="145" HorizontalAlignment="Left" VerticalAlignment="Top" Stroke="LightGray" />
+                    
+                    <Label Content="Digital Supply Switch 1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="13,35,0,0" VerticalAlignment="Top" Width="90"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="108,35,0,0" VerticalAlignment="Top" Width="90"/>
+                    
+                    <Label Content="Digital Supply Switch 2" HorizontalAlignment="Left" Margin="210,10,0,0" VerticalAlignment="Top"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="213,35,0,0" VerticalAlignment="Top" Width="90"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="308,35,0,0" VerticalAlignment="Top" Width="90"/>
+                    
+                    <Label Content="Digital Supply Switch 3" HorizontalAlignment="Left" Margin="410,10,0,0" VerticalAlignment="Top"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="413,35,0,0" VerticalAlignment="Top" Width="90"/>
+                    <ComboBox HorizontalAlignment="Left" Margin="508,35,0,0" VerticalAlignment="Top" Width="90"/>
+
+                    <CheckBox Content="Controlled by App" HorizontalAlignment="Left" Margin="13,70,0,0" VerticalAlignment="Top" />
+                    <CheckBox Content="Use in Low Power" HorizontalAlignment="Left" Margin="153,70,0,0" VerticalAlignment="Top" />
+                    
+                    <Label Content="Switch Delay(us)" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top"/>
+                    <TextBox HorizontalAlignment="Left" Height="24" Margin="113,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="72"/>
+                    
+
+
+                </Grid>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="ADC" Margin="0,210,0,0" HorizontalAlignment="Left" Width="870">
+            <Grid>
+                <Grid Margin="10,10,0,0">
+                    <CheckBox Content="ADC0" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
+                    <Rectangle Width="500" Height="200" HorizontalAlignment="Left" Margin="0,30,0,0" Stroke="LightGray" VerticalAlignment="Top" />
+                    <Label Content="INTCOMP" HorizontalAlignment="Left" Margin="5,35,0,0" VerticalAlignment="Top"/>
+                    <Label Content="SAMP" HorizontalAlignment="Left" Margin="75,35,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Calculated Convert Time" HorizontalAlignment="Left" Margin="155,35,0,0" VerticalAlignment="Top"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="8,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="78,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="158,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144"/>
+
+                    <CheckBox Content="PB4"   Margin="10,  105, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PB5"   Margin="70,  105, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PB6"   Margin="130, 105, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PB7"   Margin="190, 105, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PB8"   Margin="250, 105, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PB9"   Margin="310, 105, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PB10"  Margin="370, 105, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PB11"  Margin="430, 105, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PD0"   Margin="10,  125, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PD1"   Margin="70,  125, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PD2"   Margin="130, 125, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PD3"   Margin="190, 125, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PD4"   Margin="250, 125, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PD5"   Margin="310, 125, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PD6"   Margin="370, 125, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PD7"   Margin="430, 125, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PD8"   Margin="10,  145, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PD9"   Margin="70,  145, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PD10"  Margin="130, 145, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PD11"  Margin="190, 145, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PD12"  Margin="250, 145, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PD13"  Margin="310, 145, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PD14"  Margin="370, 145, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PD15"  Margin="430, 145, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PF0"   Margin="10,  165, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PF1"   Margin="70,  165, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PF2"   Margin="130, 165, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PF3"   Margin="190, 165, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PF4"   Margin="250, 165, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PF5"   Margin="310, 165, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PF6"   Margin="370, 165, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PF7"   Margin="430, 165, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PI8"   Margin="10,  185, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PI9"   Margin="70,  185, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PI10"  Margin="130, 185, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PI11"  Margin="190, 185, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PI12"  Margin="250, 185, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PI13"  Margin="310, 185, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PI14"  Margin="370, 185, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PI15"  Margin="430, 185, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PJ8"   Margin="10,  205, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PJ9"   Margin="70,  205, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PJ10"  Margin="130, 205, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PJ11"  Margin="190, 205, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+                </Grid>
+
+                <Grid Margin="520,10,0,0">
+                    <CheckBox Content="ADC1" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
+                    <Rectangle Width="330" Height="200" HorizontalAlignment="Left" Margin="0,30,0,0" Stroke="LightGray" VerticalAlignment="Top" />
+                    <Label Content="INTCOMP" HorizontalAlignment="Left" Margin="5,35,0,0" VerticalAlignment="Top"/>
+                    <Label Content="SAMP" HorizontalAlignment="Left" Margin="75,35,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Calculated Convert Time" HorizontalAlignment="Left" Margin="155,35,0,0" VerticalAlignment="Top"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="8,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="78,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60"/>
+                    <TextBox HorizontalAlignment="Left" Height="23" Margin="158,60,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140"/>
+
+                    <CheckBox Content="PA3"   Margin="10,  105, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PA7"   Margin="70,  105, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PA10"  Margin="130, 105, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PA11"  Margin="190, 105, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PB8"   Margin="10,  125, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PB9"   Margin="70,  125, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PB10"  Margin="130, 125, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <CheckBox Content="PE12"  Margin="10,  145, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                </Grid>
+                <GroupBox Header="Battery Monitoring" HorizontalAlignment="Left" Margin="10,250,0,0" VerticalAlignment="Top" Width="850" Height="75">
+                    <Grid>
+                        <RadioButton Content="Battery only" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                        <RadioButton Content="Battery and Ignition" HorizontalAlignment="Left" Margin="110,10,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                        <Label Content="BAT Pin" HorizontalAlignment="Left" Margin="268,6,0,0" VerticalAlignment="Top" RenderTransformOrigin="5.212,-2.154"/>
+                        <Label Content="ING Pin" HorizontalAlignment="Left" Margin="411,6,0,0" VerticalAlignment="Top"/>
+                        <ComboBox HorizontalAlignment="Left" Margin="320,6,0,0" VerticalAlignment="Top" Width="86" IsEnabled="False"/>
+                        <ComboBox HorizontalAlignment="Left" Margin="463,6,0,0" VerticalAlignment="Top" Width="86" IsEnabled="False"/>
+
+                    </Grid>
+                </GroupBox>
+
+
+
+
+
+
+
+
             </Grid>
         </GroupBox>
 
-        <GroupBox Header="ADC" HorizontalAlignment="Left" Margin="0,230,0,0" VerticalAlignment="Top" Width="552" Height="389">
-            <Grid>
-                <GroupBox Header="Battery Monitoring" HorizontalAlignment="Left" Margin="10,151,0,0" VerticalAlignment="Top" Width="182" Height="176">
-                    <Grid>
-                        <Label Content="BAT Pin" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
-                        <Label Content="ING Pin" HorizontalAlignment="Left" Margin="10,101,0,0" VerticalAlignment="Top"/>
-                        <ComboBox HorizontalAlignment="Left" Margin="67,70,0,0" VerticalAlignment="Top" Width="86" IsEnabled="False"/>
-                        <ComboBox HorizontalAlignment="Left" Margin="67,101,0,0" VerticalAlignment="Top" Width="86" IsEnabled="False"/>
-                        <RadioButton Content="Battery only" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Content="Battery and Ignition" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    </Grid>
-                </GroupBox>
-            </Grid>
-        </GroupBox>
 
     </Grid>
 </UserControl>

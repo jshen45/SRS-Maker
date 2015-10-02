@@ -6,7 +6,7 @@
              xmlns:Model="clr-namespace:SRS_Maker.Model" 
              mc:Ignorable="d">
     <Grid>
-        <GroupBox Header="FBL" HorizontalAlignment="Left" Margin="0,110,0,0" VerticalAlignment="Top" Width="1005" Height="114">
+        <GroupBox Header="FBL" HorizontalAlignment="Left" Margin="0,225,0,0" VerticalAlignment="Top" Width="1005" Height="153">
             <Grid>
                 <Label Content="ST Min" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.385,0.846"/>
                 <TextBox HorizontalAlignment="Left" Height="23" Margin="61,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" RenderTransformOrigin="0.358,-1.769"/>
@@ -26,25 +26,35 @@
                 <TextBox HorizontalAlignment="Left" Height="23" Margin="754,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="136"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="MCU" HorizontalAlignment="left" Margin="5,5,0,0" VerticalAlignment="Top" Height="100" Width="1000">
-            <Grid >
-                <Label Content="Model" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="76" Margin="10,5,0,0"/>
-                <ComboBox x:Name="ComboBox_MCU" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="120" Height="26" ItemsSource="{Binding mcuList}" SelectedItem="{Binding selectedMcu}" DisplayMemberPath ="Name" SelectionChanged="SelectedMcuUpdate"/>
-                <Label Content="Pin Package" HorizontalAlignment="Left" Margin="135,5,0,0" VerticalAlignment="Top" Height="26" Width="76" />
-                <ComboBox x:Name="PinCombo" HorizontalAlignment="Left" Margin="135,31,0,0" VerticalAlignment="Top" Width="120" Height="26" ItemsSource="{Binding PinPackage}"/>
-                <Label Content="Quartz Clock" HorizontalAlignment="Left" Margin="268,5,0,0" VerticalAlignment="Top" Height="26" Width="80"/>
-                <TextBox HorizontalAlignment="Left" Height="26" Margin="268,31,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-                <Label Content="Core Clock" HorizontalAlignment="Left" Margin="393,5,0,0" VerticalAlignment="Top" Height="26" Width="69"/>
-                <TextBox HorizontalAlignment="Left" Height="26" Margin="393,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <Label Content="Peripheral Clock1" HorizontalAlignment="Left" Margin="518,5,0,0" VerticalAlignment="Top" Height="26" Width="105"/>
-                <TextBox HorizontalAlignment="Left" Height="26" Margin="518,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <Label Content="Peripheral Clock2" HorizontalAlignment="Left" Margin="643,5,0,0" VerticalAlignment="Top" Height="26" Width="104"/>
-                <TextBox HorizontalAlignment="Left" Height="26" Margin="643,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <Label Content="Peripheral Clock3" HorizontalAlignment="Left" Margin="768,5,0,0" VerticalAlignment="Top" Height="26" Width="104"/>
-                <TextBox HorizontalAlignment="Left" Height="26" Margin="768,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <GroupBox Header="MCU" HorizontalAlignment="left" Margin="5,5,0,0" VerticalAlignment="Top" Height="215" Width="1000">
+            <Grid>
+                <Grid Margin="10,10,0,0">
+                    <Label Content="Model" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                    <ComboBox x:Name="ComboBox_MCU" Margin="3,20,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" ItemsSource="{Binding mcuList}" SelectedItem="{Binding selectedMcu}" DisplayMemberPath ="Name" SelectionChanged="SelectedMcuUpdate"/>
+                    <Label Content="Pin Package" Margin="0,45,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                    <ComboBox x:Name="PinCombo" Margin="3,65,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" ItemsSource="{Binding PinPackage}"/>
+                </Grid>
+                
+                <Label Content="Quartz Clock" HorizontalAlignment="Left" Margin="145,5,0,0" VerticalAlignment="Top" Height="26" Width="80"/>
+                <TextBox HorizontalAlignment="Left" Height="26" Margin="145,31,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+                <Label Content="Core Clock" HorizontalAlignment="Left" Margin="145,57,0,0" VerticalAlignment="Top" Height="26" Width="69" RenderTransformOrigin="-1.377,3.154"/>
+                <TextBox HorizontalAlignment="Left" Height="26" Margin="145,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Label Content="Peripheral Clock1" HorizontalAlignment="Left" Margin="270,5,0,0" VerticalAlignment="Top" Height="26" Width="105"/>
+                <TextBox HorizontalAlignment="Left" Height="26" Margin="270,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Label Content="Peripheral Clock2" HorizontalAlignment="Left" Margin="270,57,0,0" VerticalAlignment="Top" Height="26" Width="104" RenderTransformOrigin="-0.462,0.654"/>
+                <TextBox HorizontalAlignment="Left" Height="26" Margin="270,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <Label Content="Peripheral Clock3" HorizontalAlignment="Left" Margin="270,109,0,0" VerticalAlignment="Top" Height="26" Width="104"/>
+                <TextBox HorizontalAlignment="Left" Height="26" Margin="270,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                <CheckBox Content="4.5 Low Voltage Dectection Reset" HorizontalAlignment="Left" Margin="571,32,0,0" VerticalAlignment="Top"/>
+                <RadioButton Content="Clock Out NO Use" HorizontalAlignment="Left" Margin="412,32,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.456,2.944"/>
+                <RadioButton Content="FXOSC" HorizontalAlignment="Left" Margin="412,61,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.456,2.944"/>
+                <RadioButton Content="FIRC" HorizontalAlignment="Left" Margin="477,61,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.456,2.944"/>
+                <RadioButton Content="FMPLL" HorizontalAlignment="Left" Margin="530,61,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.456,2.944"/>
+                <ComboBox HorizontalAlignment="Left" Margin="461,132,0,0" VerticalAlignment="Top" Width="71"/>
+                <Label Content="Divider" HorizontalAlignment="Left" Margin="408,132,0,0" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="EEPROM" HorizontalAlignment="Left" Margin="0,254,0,-25" VerticalAlignment="Top" Width="1005" Height="159">
+        <GroupBox Header="EEPROM" HorizontalAlignment="Left" Margin="5,437,-5,-208" VerticalAlignment="Top" Width="1005" Height="159">
             <Grid>
                 <CheckBox Content="EEPROM Erase function" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="221,10,0,0" IsChecked="True"/>
                 <CheckBox Content="Reduced EEPROM Management" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>

@@ -54,3 +54,4 @@ C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker
 C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS Maker.exe
 C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS Maker.pdb
 C:\Users\Administrator\Documents\Visual Studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS Maker.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\bin\Debug\DocX.dll
