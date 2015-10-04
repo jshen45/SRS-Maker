@@ -34,17 +34,23 @@
                     <Label Content="Pin Package" Margin="0,45,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
                     <ComboBox x:Name="PinCombo" Margin="3,65,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" ItemsSource="{Binding PinPackage}"/>
                 </Grid>
+                <Grid Margin="140,10,0,0">
+                    <Rectangle Margin="0,0,0,0" Width="500" Height="150" Stroke="LightGray" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                    <Label Content="Clock" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Height="26" Width="80" />
+                    <Label Content="Quartz" HorizontalAlignment="Left" Margin="5,25,0,0" VerticalAlignment="Top" Height="26" Width="40"/>
+                    <TextBox HorizontalAlignment="Left" Height="26" Margin="8,45,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Core Clock" HorizontalAlignment="Left" Margin="145,57,0,0" VerticalAlignment="Top" Height="26" Width="69" RenderTransformOrigin="-1.377,3.154"/>
+                    <TextBox HorizontalAlignment="Left" Height="26" Margin="145,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Peripheral Clock1" HorizontalAlignment="Left" Margin="270,5,0,0" VerticalAlignment="Top" Height="26" Width="105"/>
+                    <TextBox HorizontalAlignment="Left" Height="26" Margin="270,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Peripheral Clock2" HorizontalAlignment="Left" Margin="270,57,0,0" VerticalAlignment="Top" Height="26" Width="104" RenderTransformOrigin="-0.462,0.654"/>
+                    <TextBox HorizontalAlignment="Left" Height="26" Margin="270,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <Label Content="Peripheral Clock3" HorizontalAlignment="Left" Margin="270,109,0,0" VerticalAlignment="Top" Height="26" Width="104"/>
+                    <TextBox HorizontalAlignment="Left" Height="26" Margin="270,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
+                </Grid>
                 
-                <Label Content="Quartz Clock" HorizontalAlignment="Left" Margin="145,5,0,0" VerticalAlignment="Top" Height="26" Width="80"/>
-                <TextBox HorizontalAlignment="Left" Height="26" Margin="145,31,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120"/>
-                <Label Content="Core Clock" HorizontalAlignment="Left" Margin="145,57,0,0" VerticalAlignment="Top" Height="26" Width="69" RenderTransformOrigin="-1.377,3.154"/>
-                <TextBox HorizontalAlignment="Left" Height="26" Margin="145,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <Label Content="Peripheral Clock1" HorizontalAlignment="Left" Margin="270,5,0,0" VerticalAlignment="Top" Height="26" Width="105"/>
-                <TextBox HorizontalAlignment="Left" Height="26" Margin="270,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <Label Content="Peripheral Clock2" HorizontalAlignment="Left" Margin="270,57,0,0" VerticalAlignment="Top" Height="26" Width="104" RenderTransformOrigin="-0.462,0.654"/>
-                <TextBox HorizontalAlignment="Left" Height="26" Margin="270,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-                <Label Content="Peripheral Clock3" HorizontalAlignment="Left" Margin="270,109,0,0" VerticalAlignment="Top" Height="26" Width="104"/>
-                <TextBox HorizontalAlignment="Left" Height="26" Margin="270,135,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                
                 <CheckBox Content="4.5 Low Voltage Dectection Reset" HorizontalAlignment="Left" Margin="571,32,0,0" VerticalAlignment="Top"/>
                 <RadioButton Content="Clock Out NO Use" HorizontalAlignment="Left" Margin="412,32,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.456,2.944"/>
                 <RadioButton Content="FXOSC" HorizontalAlignment="Left" Margin="412,61,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.456,2.944"/>
