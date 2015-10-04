@@ -5,41 +5,42 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" >
     <Grid>
-        <GroupBox Header="IO General" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="870" Height="210">
+        <GroupBox Header="IO General" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Width="1000">
             <Grid>
-                <Grid Margin="10,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >
-                    <CheckBox Content="Analog Inputs" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox Content="Digital Inputs" HorizontalAlignment="Left" Margin="0,25,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox Content="Digital Outputs" HorizontalAlignment="Left" Margin="0,50,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox Content="Fast Digital Inputs" HorizontalAlignment="Left" Margin="0,75,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <CheckBox Content="Virtual Inputs" HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                    <Label Content="Multiple Activation Delay(us)" HorizontalAlignment="Left" Margin="-5,120,0,0" VerticalAlignment="Top"/>
-                    <TextBox HorizontalAlignment="Left" Height="23" Margin="162,121,0,-1" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Width="50"/>
-                </Grid>
-                <Grid Margin="235,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <Rectangle Margin="0,0,0,0" Width="615" Height="145" HorizontalAlignment="Left" VerticalAlignment="Top" Stroke="LightGray" />
-                    
-                    <Label Content="Digital Supply Switch 1" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="13,35,0,0" VerticalAlignment="Top" Width="90"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="108,35,0,0" VerticalAlignment="Top" Width="90"/>
-                    
-                    <Label Content="Digital Supply Switch 2" HorizontalAlignment="Left" Margin="210,10,0,0" VerticalAlignment="Top"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="213,35,0,0" VerticalAlignment="Top" Width="90"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="308,35,0,0" VerticalAlignment="Top" Width="90"/>
-                    
-                    <Label Content="Digital Supply Switch 3" HorizontalAlignment="Left" Margin="410,10,0,0" VerticalAlignment="Top"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="413,35,0,0" VerticalAlignment="Top" Width="90"/>
-                    <ComboBox HorizontalAlignment="Left" Margin="508,35,0,0" VerticalAlignment="Top" Width="90"/>
+                <Border HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="LightGray" BorderThickness="1" Width="230">
+                    <Grid Margin="5">
+                        <CheckBox Content="Analog Inputs" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                        <CheckBox Content="Digital Inputs" HorizontalAlignment="Left" Margin="0,25,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                        <CheckBox Content="Digital Outputs" HorizontalAlignment="Left" Margin="0,50,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                        <CheckBox Content="Fast Digital Inputs" HorizontalAlignment="Left" Margin="0,75,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                        <CheckBox Content="Virtual Inputs" HorizontalAlignment="Left" Margin="0,100,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                        <Label Content="Multiple Activation Delay(us)" HorizontalAlignment="Left" Margin="-5,120,0,0" VerticalAlignment="Top"/>
+                        <TextBox HorizontalAlignment="Left" Height="23" Margin="162,121,0,-1" TextWrapping="Wrap" Text="100" VerticalAlignment="Top" Width="50"/>
+                    </Grid>
+                </Border>
+                <Border Margin="235,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="LightGray" BorderThickness="1" >
+                    <Grid Margin="5" HorizontalAlignment="Left" VerticalAlignment="Top">
+                        <Label Content="Digital Input Supply Switch" Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <Label Content="Switch 1" Margin="0,30,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                        <ComboBox HorizontalAlignment="Left" Margin="0,55,0,0" VerticalAlignment="Top" Width="90"/>
+                        <ComboBox HorizontalAlignment="Left" Margin="95,55,0,0" VerticalAlignment="Top" Width="90"/>
+                        <Label Content="Switch 2" HorizontalAlignment="Left" Margin="195,30,0,0" VerticalAlignment="Top"/>
+                        <ComboBox HorizontalAlignment="Left" Margin="195,55,0,0" VerticalAlignment="Top" Width="90"/>
+                        <ComboBox HorizontalAlignment="Left" Margin="290,55,0,0" VerticalAlignment="Top" Width="90"/>
+                        <Label Content="Switch 3" HorizontalAlignment="Left" Margin="385,30,0,0" VerticalAlignment="Top"/>
+                        <ComboBox HorizontalAlignment="Left" Margin="390,55,0,0" VerticalAlignment="Top" Width="90"/>
+                        <ComboBox HorizontalAlignment="Left" Margin="485,55,0,0" VerticalAlignment="Top" Width="90"/>
 
-                    <CheckBox Content="Controlled by App" HorizontalAlignment="Left" Margin="13,70,0,0" VerticalAlignment="Top" />
-                    <CheckBox Content="Use in Low Power" HorizontalAlignment="Left" Margin="153,70,0,0" VerticalAlignment="Top" />
-                    
-                    <Label Content="Switch Delay(us)" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top"/>
-                    <TextBox HorizontalAlignment="Left" Height="24" Margin="113,96,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="72"/>
-                    
+                        <CheckBox Content="Controlled by App" HorizontalAlignment="Left" Margin="13,86,0,0" VerticalAlignment="Top" />
+                        <CheckBox Content="Use in Low Power" HorizontalAlignment="Left" Margin="153,89,0,0" VerticalAlignment="Top" />
+
+                        <Label Content="Switch Delay(us)" HorizontalAlignment="Left" Margin="0,104,0,-8" VerticalAlignment="Top"/>
+                        <TextBox HorizontalAlignment="Left" Height="24" Margin="104,104,0,-8" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="72"/>
 
 
-                </Grid>
+
+                    </Grid>
+                </Border>
             </Grid>
         </GroupBox>
         <GroupBox Header="ADC" Margin="0,210,0,0" HorizontalAlignment="Left" Width="870">
@@ -120,25 +121,18 @@
                     <CheckBox Content="PB10"  Margin="130, 125, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                     <CheckBox Content="PE12"  Margin="10,  145, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                 </Grid>
-                <GroupBox Header="Battery Monitoring" HorizontalAlignment="Left" Margin="10,250,0,0" VerticalAlignment="Top" Width="850" Height="75">
-                    <Grid>
-                        <RadioButton Content="Battery only" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Content="Battery and Ignition" HorizontalAlignment="Left" Margin="110,10,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                        <Label Content="BAT Pin" HorizontalAlignment="Left" Margin="268,6,0,0" VerticalAlignment="Top" RenderTransformOrigin="5.212,-2.154"/>
-                        <Label Content="ING Pin" HorizontalAlignment="Left" Margin="411,6,0,0" VerticalAlignment="Top"/>
-                        <ComboBox HorizontalAlignment="Left" Margin="320,6,0,0" VerticalAlignment="Top" Width="86" IsEnabled="False"/>
-                        <ComboBox HorizontalAlignment="Left" Margin="463,6,0,0" VerticalAlignment="Top" Width="86" IsEnabled="False"/>
+                <Border Margin="0,250,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="LightGray" BorderThickness="1">
+                    <Grid Margin="5">
+                        <Label Content="Battery Monitoring" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="5.212,-2.154"/>
+                        <RadioButton Content="Battery only" HorizontalAlignment="Left" Margin="0,30,0,0" VerticalAlignment="Top"/>
+                        <RadioButton Content="Battery and Ignition" HorizontalAlignment="Left" Margin="110,30,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                        <Label Content="BAT Pin" HorizontalAlignment="Left" Margin="268,26,0,0" VerticalAlignment="Top" RenderTransformOrigin="5.212,-2.154"/>
+                        <Label Content="ING Pin" HorizontalAlignment="Left" Margin="411,26,0,0" VerticalAlignment="Top"/>
+                        <ComboBox HorizontalAlignment="Left" Margin="320,23,0,0" VerticalAlignment="Top" Width="86" IsEnabled="False"/>
+                        <ComboBox HorizontalAlignment="Left" Margin="463,23,0,0" VerticalAlignment="Top" Width="86" IsEnabled="False"/>
 
                     </Grid>
-                </GroupBox>
-
-
-
-
-
-
-
-
+                </Border>
             </Grid>
         </GroupBox>
 
