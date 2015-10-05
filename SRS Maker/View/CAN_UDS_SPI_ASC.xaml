@@ -32,7 +32,7 @@
                 <ComboBox HorizontalAlignment="Left" Margin="216,198,0,0" VerticalAlignment="Top" Width="71"/>
                 <ComboBox HorizontalAlignment="Left" Margin="216,229,0,0" VerticalAlignment="Top" Width="71"/>
                 <Label Content="Rx Pin" HorizontalAlignment="Left" Margin="296,43,0,0" VerticalAlignment="Top"/>
-                <ComboBox HorizontalAlignment="Left" Margin="292,74,0,0" VerticalAlignment="Top" Width="70"/>
+                <ComboBox HorizontalAlignment="Left" Margin="292,74,0,0" VerticalAlignment="Top" Width="70" ItemsSource="{Binding CanRxPinList}" />
                 <ComboBox HorizontalAlignment="Left" Margin="292,105,0,0" VerticalAlignment="Top" Width="70"/>
                 <ComboBox HorizontalAlignment="Left" Margin="292,136,0,0" VerticalAlignment="Top" Width="70"/>
                 <ComboBox HorizontalAlignment="Left" Margin="292,167,0,0" VerticalAlignment="Top" Width="70"/>

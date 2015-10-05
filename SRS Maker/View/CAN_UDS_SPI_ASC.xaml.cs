@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SRS_Maker.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,22 @@ namespace SRS_Maker.View
     /// </summary>
     public partial class CAN_UDS_SPI_ASC : UserControl
     {
+        public List<string> CanRxPinList { get; set; }
+
         public CAN_UDS_SPI_ASC()
         {
+            DataContext = this;
+
+            InitializeCanRxPinList();
+
             InitializeComponent();
         }
+
+        private void InitializeCanRxPinList()
+        {
+            Pins _CanPinList = new Pins();
+            CanRxPinList = _CanPinList.Can0RxPinList;
+        }
+
     }
 }
