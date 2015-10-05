@@ -34,7 +34,7 @@ namespace SRS_Maker.View
 
         private void InitializeCanRxPinList()
         {
-            Pins _CanPinList = new Pins();
+            Pins _CanPinList = new Pins("144 Pin");
             CanRxPinList = _CanPinList.Can0RxPinList;
         }
 

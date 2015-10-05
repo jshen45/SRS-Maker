@@ -16,9 +16,9 @@ namespace SRS_Maker.Model
 
     public class Pins
     {
-        private List<Pin> PinList { get; set; }
+        public List<Pin> PinList { get; set; }
         
-        public Pins()
+        public Pins(string pinNumber)
         {
             PinList = new List<Pin>();
                 
@@ -199,6 +199,25 @@ namespace SRS_Maker.Model
             PinList.Add(new Pin() { Name = "PI2", PinNumber = new List<int?> { 72 }, Usage = new List<string> { "GPIO" } });
             PinList.Add(new Pin() { Name = "PI3", PinNumber = new List<int?> { 71 }, Usage = new List<string> { "GPIO" } });
             PinList.Add(new Pin() { Name = "PI4", PinNumber = new List<int?> { 5 }, Usage = new List<string> { "GPIO", "SPI5 CLK" } });
+
+            int PinNum = 0;
+
+            if (pinNumber == "100 Pin") PinNum = 3;
+            else if (pinNumber == "144 Pin") PinNum = 2;
+            else if (pinNumber == "176 Pin") PinNum = 1;
+
+            PinList.RemoveAll((Pin p) => p.PinNumber.Count() < PinNum);
+        }
+
+        public List<string> PortNameList
+        {
+            get
+            {
+                if (PinList == null)
+                    return null;
+                var list = PinList.Select((Pin pin) => pin.Name).ToList();
+                return list;
+            }
         }
 
         public List<string> Can0RxPinList

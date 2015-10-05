@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SRS_Maker.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,14 +21,31 @@ namespace SRS_Maker.View
     /// </summary>
     public partial class IO : UserControl
     {
+        public List<string> PortList { get; set; }
+        public List<Pin> Ports { get; set; }
+        public Pin SelectedPort { get; set; }
+        
         public IO()
         {
+            InitializePortList();
+
             InitializeComponent();
+
+            DataContext = this;
         }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        private void InitializePortList()
         {
+            Ports = new List<Pin>();
+            PortList = new List<string>();
+            Pins port = new Pins("144 Pin");
+            Ports = port.PinList;
+            PortList = port.PortNameList;
+        }
 
+        private void SelectedItemChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UsageCombo.DataContext = SelectedPort;
         }
     }
 }
