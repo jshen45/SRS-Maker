@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Config>
+  <Mcu
+    Model=""
+    PinPackage="">
+    <Clock
+      Quartz=""
+      Core=""
+      Peripheral1=""
+      Peripheral2=""
+      Peripheral3="">
+      <ClockOutput
+        Use="False" />
+    </Clock>
+  </Mcu>
+  <OS>
+    <Task>
+      <Task_SWP_Init
+        Priority="250"
+        Preemptive="False"
+        AutoStart="True" />
+      <Task_SWP_System_Idle
+        Priority="1"
+        Preemptive="True"
+        AutoStart="True" />
+      <Task_SWP_FG1_EventManager
+        Priority="180"
+        Preemptive="True"
+        AutoStart="True" />
+      <Task_SWP_FG1_biomanag
+        Priority="195"
+        Preemptive="True"
+        AutoStart="False" />
+      <Task_SWP_FG2_biomanag
+        Priority="230"
+        Preemptive="True"
+        AutoStart="False" />
+      <Task_SWP_FG1_Watchdog_Mngr
+        Priority="165"
+        Preemptive="True"
+        AutoStart="False" />
+      <Task_SWP_FG2_LPM
+        Priority="255"
+        Preemptive="True"
+        AutoStart="False" />
+      <Task_SWP_FG1_5ms
+        Priority="199"
+        Preemptive="True"
+        AutoStart="False"
+        AlarmOffset="1"
+        AlarmCycle="2" />
+      <Task_SWP_FG1_10ms
+        Priority="190"
+        Preemptive="True"
+        AutoStart="False"
+        AlarmOffset="2"
+        AlarmCycle="4" />
+      <Task_SWP_FG1_20ms
+        Priority="170"
+        Preemptive="True"
+        AutoStart="False"
+        AlarmOffset="4"
+        AlarmCycle="8" />
+      <Task_SWP_FG1_100ms
+        Priority="120"
+        Preemptive="True"
+        AutoStart="False"
+        AlarmOffset="8"
+        AlarmCycle="40" />
+      <Task_SWP_FG1_1s
+        Priority="107"
+        Preemptive="True"
+        AutoStart="False"
+        AlarmOffset="40"
+        AlarmCycle="400" />
+    </Task>
+    <Debugging
+      CpuLoad="False"
+      ItLoad="False"
+      StackDepth="False"
+      TaskMonitoring="False" />
+    <FBL>
+      <STmin>5</STmin>
+    </FBL>
+  </OS>
+</Config>

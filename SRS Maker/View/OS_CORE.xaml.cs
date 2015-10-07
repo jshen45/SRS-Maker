@@ -17,11 +17,9 @@ using System.Windows.Shapes;
 
 namespace SRS_Maker.View
 {
-    /// <summary>
-    /// Interaction logic for OS_CORE.xaml
-    /// </summary>
     public partial class OS_CORE : UserControl
     {
+        public Pins Ports { get; set; }
         public OS_CORE()
         {
             InitializeTaskList();
@@ -49,5 +47,39 @@ namespace SRS_Maker.View
             SwpTaskList.Add(new SwpTask() { Name = "Task_SWP_FG1_100ms", Priority = 120, Preemptive = true, AutoStart = false, AlarmOffset = 8, AlarmCycle = 40 });
             SwpTaskList.Add(new SwpTask() { Name = "Task_SWP_FG1_1s", Priority = 107, Preemptive = true, AutoStart = false, AlarmOffset = 40, AlarmCycle = 400 });
         }
+
+        private void ComboBox_DropDownOpened(object sender, EventArgs e)
+        {
+            if (ExternalWatchdogTogglePin.ItemsSource == null)
+            {
+                ExternalWatchdogTogglePin.ItemsSource = Ports.PortNameList;
+            }
+        }
+
+        private void CheckBox_InternalWatchDog_Checked(object sender, RoutedEventArgs e)
+        {
+            TextBox_InternalWatchDogTimeOut.IsEnabled = true;
+        }
+
+        private void CheckBox_InternalWatchDog_Unchecked(object sender, RoutedEventArgs e)
+        {
+            TextBox_InternalWatchDogTimeOut.IsEnabled = false;
+        }
+
+        private void CheckBox_ExternalWatchDog_Checked(object sender, RoutedEventArgs e)
+        {
+            TextBox_ExternalWatchDogTimeOut.IsEnabled = true;
+            ExternalWatchdogTogglePin.IsEnabled = true;
+        }
+
+        private void CheckBox_ExternalWatchDog_Unchecked(object sender, RoutedEventArgs e)
+        {
+            TextBox_ExternalWatchDogTimeOut.Text = "";
+            TextBox_ExternalWatchDogTimeOut.IsEnabled = false;
+
+            ExternalWatchdogTogglePin.IsEnabled = false;
+            ExternalWatchdogTogglePin.SelectedIndex = -1;
+        }
+
     }
 }

@@ -11,9 +11,9 @@
                 <Border Margin="0,0,0,0" BorderBrush="LightGray" BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="128">
                     <Grid Margin="5,5,5,5">
                         <Label Content="Model" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <ComboBox x:Name="ComboBox_MCU" Margin="0,25,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" ItemsSource="{Binding mcuList}" SelectedItem="{Binding selectedMcu}" DisplayMemberPath ="Name" SelectionChanged="SelectedMcuUpdate"/>
+                        <ComboBox x:Name="ComboBox_McuModel" Margin="0,25,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" SelectedItem="{Binding Mcu.SelectedMcu,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath ="Name" SelectionChanged="SelectedMcuUpdate" DropDownOpened="ComboBox_MCU_DropDownOpened"/>
                         <Label Content="Pin Package" Margin="0,50,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <ComboBox x:Name="PinCombo" Margin="0,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" ItemsSource="{Binding PinPackage}"/>
+                        <ComboBox x:Name="ComboBox_PinPackage" Margin="0,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" ItemsSource="{Binding PinPackage}"/>
                     </Grid>
                 </Border>
                 <Border Margin="125,0,0,0" BorderBrush="LightGray" BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="215">
@@ -24,28 +24,27 @@
                         <Label Content="Peripheral 1" Margin="0,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="9.333" />
                         <Label Content="Peripheral 2" Margin="65,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="9.333" />
                         <Label Content="Peripheral 3" Margin="130,70,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="9.333" />
-                        <TextBox  Margin="5,45,0,0" TextWrapping="Wrap" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" RenderTransformOrigin="0.017,0.5"/>
-                        <TextBox  Margin="70,45,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.65,1.269"/>
-                        <TextBox  Margin="5,90,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60"/>
-                        <TextBox  Margin="70,90,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60"/>
-                        <TextBox  Margin="135,90,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60"/>
+                        <TextBox x:Name="TextBox_Clock_Quartz" Margin="5,45,0,0" TextWrapping="Wrap" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="60" RenderTransformOrigin="0.017,0.5"/>
+                        <TextBox x:Name="TextBox_Clock_Core" Margin="70,45,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.65,1.269"/>
+                        <TextBox x:Name="TextBox_Clock_Peripheral1" Margin="5,90,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60"/>
+                        <TextBox x:Name="TextBox_Clock_Peripheral2" Margin="70,90,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60"/>
+                        <TextBox x:Name="TextBox_Clock_Peripheral3" Margin="135,90,0,0" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60"/>
                     </Grid>
                 </Border>
                 <Border Margin="345,0,0,0" BorderBrush="LightGray" BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="330">
                     <Grid Margin="5,5,5,5">
-                        <Label Content="Divider" HorizontalAlignment="Left" Margin="185,31,0,-3" VerticalAlignment="Top"/>
-                        <CheckBox Content="Clock Output" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <RadioButton Content="FXOSC" HorizontalAlignment="Left" Margin="0,35,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Content="FMPLL" HorizontalAlignment="Left" Margin="65,35,0,0" VerticalAlignment="Top"/>
-                        <RadioButton Content="FIRC" HorizontalAlignment="Left" Margin="129,35,0,0" VerticalAlignment="Top"/>
-                        <ComboBox Margin="233,28,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="78"/>
-
+                        <CheckBox x:Name="CheckBox_ClockOutput" Content="Clock Output" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Checked="CheckBox_ClockOutput_Checked" Unchecked="CheckBox_ClockOutput_Unchecked" />
+                        <RadioButton x:Name="RadioButton_ClockOutput_FXOSC" Content="FXOSC" HorizontalAlignment="Left" Margin="0,35,0,0" VerticalAlignment="Top" IsEnabled="False" IsChecked="False"/>
+                        <RadioButton x:Name="RadioButton_ClockOutput_FMPLL" Content="FMPLL" HorizontalAlignment="Left" Margin="66,35,0,0" VerticalAlignment="Top" IsEnabled="False" IsChecked="False"/>
+                        <RadioButton x:Name="RadioButton_ClockOutput_FIRC" Content="FIRC" HorizontalAlignment="Left" Margin="130,35,0,0" VerticalAlignment="Top" IsEnabled="False" IsChecked="False"/>
+                        <Label Content="Divider" HorizontalAlignment="Left" Margin="185,31,0,0" VerticalAlignment="Top"/>
+                        <ComboBox x:Name="ComboBox_ClockOutput_Divider" Margin="238,32,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="70" IsEnabled="False" ItemsSource="{Binding ClockOutput_Divider_List}"/>
                     </Grid>
 
                 </Border>
-                <Border Margin="345,71,0,0" BorderBrush="LightGray" BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="330" Height="57">
-                    <Grid Margin="5,5,5,5">
-                        <CheckBox Content="4.5 Low Voltage Dectection Reset" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
+                <Border Margin="345,75,0,0" BorderBrush="LightGray" BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="330" Height="53">
+                    <Grid Margin="5">
+                        <CheckBox x:Name="CheckBox_LowVoltageDetection" Content="4.5 Low Voltage Dectection Reset" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
                     </Grid>
                 </Border>
             </Grid>
@@ -54,67 +53,59 @@
             <Grid>
                 <Border Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="1" BorderBrush="LightGray" Width="260" Height="124">
                     <Grid Margin="5">
-                        <Label Content="FBL Location" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.488,-4.038"/>
-                        <ComboBox HorizontalAlignment="Left" Margin="84,1,0,0" VerticalAlignment="Top" Width="156" ItemsSource="{Binding BootAddressList}" SelectedItem="{Binding selectedBootAddressL}"/>
+                        <Label Content="FBL Location" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" />
+                        <ComboBox x:Name="ComboBox_FBL_Address" HorizontalAlignment="Left" Margin="84,1,0,0" VerticalAlignment="Top" Width="156" ItemsSource="{Binding BootAddressList}" SelectedItem="{Binding selectedBootAddressL}"/>
                         <Label Content="ASW Security-Key Address" HorizontalAlignment="Left" Margin="0,35,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.435,0.5"/>
                         <Label Content="ASW Identification Address" HorizontalAlignment="Left" Margin="0,65,0,0" VerticalAlignment="Top"/>
-                        <TextBox HorizontalAlignment="Left" Height="23" Margin="160,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
-                        <TextBox HorizontalAlignment="Left" Height="23" Margin="160,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
-                        
-
+                        <TextBox x:Name="ComboBox_FBL_SecurityAddress" HorizontalAlignment="Left" Height="23" Margin="160,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
+                        <TextBox x:Name="ComboBox_FBL_IdentificationAddress" HorizontalAlignment="Left" Height="23" Margin="160,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="80"/>
                     </Grid>
-
                 </Border>
-                <Border Margin="265,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="1" BorderBrush="LightGray" Width="370">
+                <Border Margin="265,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="1" BorderBrush="LightGray" Width="410">
                     <Grid Margin="5">
                         <Label Content="ST Min" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top"/>
-                        <TextBox HorizontalAlignment="Left" Height="23" Margin="53,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" RenderTransformOrigin="0.142,0.596"/>
+                        <TextBox x:Name="TextBox_FBL_STmin" HorizontalAlignment="Left" Height="23" Margin="53,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="88" RenderTransformOrigin="0.142,0.596"/>
                     </Grid>
                 </Border>
-                <Border Margin="265,43,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="1" BorderBrush="LightGray" Width="370">
+                <Border Margin="265,43,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="1" BorderBrush="LightGray" Width="410">
                     <Grid Margin="5">
-                        <Label Content="Version" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.385,0.846" FontSize="10.667" />
+                        <Label Content="Version" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10.667" />
                         <Label Content="INT. Version" HorizontalAlignment="Left" Margin="80,0,0,0" VerticalAlignment="Top" FontSize="10.667"/>
-                        <Label Content="Date" HorizontalAlignment="Left" Margin="170,0,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.385,0.846" FontSize="10.667"/>
-                        <RadioButton Content="Auto" HorizontalAlignment="Left" Margin="170,26,0,0" VerticalAlignment="Top" IsChecked="True" FontSize="9.333" RenderTransformOrigin="3.295,-3.944"/>
-                        <RadioButton Content="Manual" HorizontalAlignment="Left" Margin="170,48,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.778,0.556" FontSize="9.333"/>
-                        <TextBox HorizontalAlignment="Left" Margin="0,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.092,0.577"/>
-                        <TextBox HorizontalAlignment="Left" Margin="80,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.092,0.577"/>
-                        <DatePicker HorizontalAlignment="Left" Margin="235,43,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.15,-0.231" Width="113"/>
+                        <Label Content="Date" HorizontalAlignment="Left" Margin="170,0,0,0" VerticalAlignment="Top" FontSize="10.667"/>
+                        <TextBox x:Name="TextBox_FBL_Version" HorizontalAlignment="Left" Margin="0,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75" />
+                        <TextBox x:Name="TextBox_FBL_IntVersion" HorizontalAlignment="Left" Margin="80,24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75"/>
+                        <RadioButton x:Name="RadioButton_FBL_BuildDate_Auto" Content="Auto" HorizontalAlignment="Left" Margin="170,26,0,0" VerticalAlignment="Top" IsChecked="True" FontSize="9.333" Checked="RadioButton_FblBuildDate_Auto_Checked"/>
+                        <RadioButton x:Name="RadioButton_FBL_BuildDate_Manual" Content="Manual" HorizontalAlignment="Left" Margin="170,48,0,0" VerticalAlignment="Top" FontSize="9.333" Checked="RadioButton_FblBuildDate_Manual_Checked"/>
+                        <DatePicker x:Name="DatePicker_FBL_BuildDate_Manual" HorizontalAlignment="Left" Margin="235,43,0,0" VerticalAlignment="Top" Width="113" IsEnabled="False"/>
                     </Grid>
                 </Border>
             </Grid>
         </GroupBox>
-        <GroupBox Header="EEPROM" HorizontalAlignment="Left" Margin="0,340,0,0" VerticalAlignment="Top" Width="1000" Height="155">
+        <GroupBox Header="EEPROM" HorizontalAlignment="Left" Margin="0,340,0,-95" VerticalAlignment="Top" Width="1000" >
             <Grid>
-                <Border Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="1" BorderBrush="LightGray" Width="600">
+                <Border Margin="0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="1" BorderBrush="LightGray" Width="675">
                     <Grid Margin="5">
-                        <CheckBox Content="Reduced EEPROM Management" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                        <CheckBox Content="EEPROM Erase function" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="221,0,0,0" IsChecked="True"/>
-                        
+                        <CheckBox x:Name="CheckBox_EEPROM_ReducedManager" Content="Reduced EEPROM Management" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                        <CheckBox x:Name="CheckBox_EEPROM_EraseFunction" Content="EEPROM Erase function" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="221,0,0,0" IsChecked="True"/>
                     </Grid>
                 </Border>
-                
-                <RadioButton x:Name="RadioBtn_InternalEEPROM" Content="Interanl EEPROM" HorizontalAlignment="Left" Margin="5,56,0,0" VerticalAlignment="Top" IsChecked="True"/>
-                <Label Content="EEPROM Size(byte)" HorizontalAlignment="Left" Margin="138,52,0,0" VerticalAlignment="Top" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_InternalEEPROM}"/>
-                <TextBox x:Name="Text_InternalE2PRomSize" HorizontalAlignment="Left" Height="23" Margin="252,52,0,0" TextWrapping="Wrap" Text="4096" VerticalAlignment="Top" Width="51" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_InternalEEPROM}"/>
-                <Label Content="User D-flash(byte)" HorizontalAlignment="Left" Margin="303,52,0,0" VerticalAlignment="Top" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_InternalEEPROM}"/>
-                <TextBox x:Name="Text_InternalE2PRomSize_Copy" HorizontalAlignment="Left" Height="23" Margin="411,52,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="51" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_InternalEEPROM}"/>
-                <RadioButton x:Name="RadioBtn_ExternalE2PRom" Content="External EEPROM" HorizontalAlignment="Left" Margin="5,85,0,0" VerticalAlignment="Top" />
-                <Label Content="IC" HorizontalAlignment="Left" Margin="138,80,0,0" VerticalAlignment="Top" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_ExternalE2PRom}"/>
-                <ComboBox HorizontalAlignment="Left" Margin="378,80,0,0" VerticalAlignment="Top" Width="61" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_ExternalE2PRom}" RenderTransformOrigin="-0.951,0.385"/>
-                <Label Content="SPI Channel" HorizontalAlignment="Left" Margin="303,79,0,0" VerticalAlignment="Top" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_ExternalE2PRom}" RenderTransformOrigin="-1.08,1.346"/>
-                <ComboBox x:Name="externalEEPROM" HorizontalAlignment="Left" Margin="161,80,0,0" VerticalAlignment="Top" Width="142" ItemsSource="{Binding externalE2PRomList}" SelectedItem="{Binding selectedExternalE2PRom}" DisplayMemberPath ="Name" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_ExternalE2PRom}"/>
-                <Label Content="CS Pin" HorizontalAlignment="Left" Margin="439,80,0,0" VerticalAlignment="Top" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_ExternalE2PRom}" RenderTransformOrigin="1.689,2.115"/>
-                <ComboBox HorizontalAlignment="Left" Margin="484,80,0,0" VerticalAlignment="Top" Width="79" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_ExternalE2PRom}"/>
-
-
-
-
-
+                <Border Margin="0,35,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="1" BorderBrush="LightGray" Width="675">
+                    <Grid Margin="5">
+                        <Label Content="EEPROM Size(byte)" HorizontalAlignment="Left" Margin="136,2,0,0" VerticalAlignment="Top" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_InternalEEPROM}"/>
+                        <Label Content="User D-flash(byte)" HorizontalAlignment="Left" Margin="301,2,0,0" VerticalAlignment="Top" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_InternalEEPROM}"/>
+                        <Label Content="IC" HorizontalAlignment="Left" Margin="136,32,0,0" VerticalAlignment="Top" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_ExternalE2PRom}"/>
+                        <Label Content="SPI Channel" HorizontalAlignment="Left" Margin="304,31,0,-4" VerticalAlignment="Top" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_ExternalE2PRom}"/>
+                        <Label Content="CS Pin" HorizontalAlignment="Left" Margin="440,32,0,-5" VerticalAlignment="Top" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_ExternalE2PRom}" />
+                        <RadioButton x:Name="RadioButton_InternalEEPRom" Content="Interanl EEPROM" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                        <TextBox x:Name="TextBox_InternalEEPRom_EEPRomSize" HorizontalAlignment="Left" Height="23" Margin="250,2,0,0" TextWrapping="Wrap" Text="4096" VerticalAlignment="Top" Width="51" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_InternalEEPROM}"/>
+                        <TextBox x:Name="TextBox_InternalEEPRom_DFlashSize" HorizontalAlignment="Left" Height="23" Margin="409,2,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="51" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_InternalEEPROM}"/>
+                        <RadioButton x:Name="RadioButton_ExternalEEPRom" Content="External EEPROM" HorizontalAlignment="Left" Margin="5,35,0,0" VerticalAlignment="Top" Checked="RadioBtn_ExternalE2PRom_Checked" />
+                        <ComboBox x:Name="ComboBox_ExternalEEPRom_IC" HorizontalAlignment="Left" Margin="157,33,0,-6" VerticalAlignment="Top" Width="142" ItemsSource="{Binding externalE2PRomList}" SelectedItem="{Binding selectedExternalE2PRom}" DisplayMemberPath ="Name" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_ExternalE2PRom}"/>
+                        <ComboBox x:Name="ComboBox_ExternalEEPRom_SpiChannel" HorizontalAlignment="Left" Margin="379,32,0,-5" VerticalAlignment="Top" Width="61" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_ExternalE2PRom}" RenderTransformOrigin="-0.951,0.385"/>
+                        <ComboBox x:Name="ComboBox_ExternalEEPRom_SpiCsPin" HorizontalAlignment="Left" Margin="485,32,0,-5" VerticalAlignment="Top" Width="79" IsEnabled="{Binding IsChecked, ElementName=RadioBtn_ExternalE2PRom}"/>
+                    </Grid>
+                </Border>
             </Grid>
         </GroupBox>
-
-
     </Grid>
 </UserControl>

@@ -22,7 +22,7 @@
                     </Grid>
                 </Border>
 
-                <DataGrid x:Name="SwpTaskGrid" HorizontalAlignment="Left" Margin="135,0,0,0" VerticalAlignment="Top" Height="400" Width="700" BorderThickness="1" BorderBrush="LightGray" ItemsSource="{Binding SwpTaskList}" AutoGenerateColumns="False">
+                <DataGrid x:Name="DataGrid_Task" HorizontalAlignment="Left" Margin="135,0,0,0" VerticalAlignment="Top" Height="400" Width="700" BorderThickness="1" BorderBrush="LightGray" ItemsSource="{Binding SwpTaskList}" AutoGenerateColumns="False">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="200"/>
                         <DataGridTextColumn Header="Priority" Binding="{Binding Priority}" Width="60"/>
@@ -44,14 +44,14 @@
         </GroupBox>
         <GroupBox Header="Watchdog Manager" HorizontalAlignment="Left" Margin="0,526,0,-10" VerticalAlignment="Top" Width="1000">
             <Grid Margin="5,10,5,10">
-                <CheckBox Content="Internal Watchdog" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
+                <CheckBox x:Name="CheckBox_InternalWatchDog" Content="Internal Watchdog" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Checked="CheckBox_InternalWatchDog_Checked" Unchecked="CheckBox_InternalWatchDog_Unchecked" />
                 <Label Content="Time-Out(ms)" HorizontalAlignment="Left" Margin="150,-4,0,0" VerticalAlignment="Top"/>
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="237,-4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" IsEnabled="False"/>
-                <CheckBox Content="External Watchdog" HorizontalAlignment="Left" Margin="0,30,0,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="TextBox_InternalWatchDogTimeOut" HorizontalAlignment="Left" Height="23" Margin="237,-4,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" IsEnabled="False"/>
+                <CheckBox x:Name="CheckBox_ExternalWatchDog" Content="External Watchdog" HorizontalAlignment="Left" Margin="0,30,0,0" VerticalAlignment="Top" Checked="CheckBox_ExternalWatchDog_Checked" Unchecked="CheckBox_ExternalWatchDog_Unchecked"/>
                 <Label Content="Trigger Pin" HorizontalAlignment="Left" Margin="309,27,0,0" VerticalAlignment="Top" />
                 <Label Content="Time-Out(ms)" HorizontalAlignment="Left" Margin="150,27,0,0" VerticalAlignment="Top"/>
-                <TextBox HorizontalAlignment="Left" Height="23" Margin="237,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" IsEnabled="False"/>
-                <ComboBox HorizontalAlignment="Left" Margin="379,27,0,0" VerticalAlignment="Top" Width="99" IsEnabled="False"/>
+                <TextBox x:Name="TextBox_ExternalWatchDogTimeOut" HorizontalAlignment="Left" Height="23" Margin="237,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" IsEnabled="False"/>
+                <ComboBox x:Name="ExternalWatchdogTogglePin" HorizontalAlignment="Left" Margin="379,27,0,0" VerticalAlignment="Top" Width="99" IsEnabled="False" DropDownOpened="ComboBox_DropDownOpened"/>
             </Grid>
         </GroupBox>
 

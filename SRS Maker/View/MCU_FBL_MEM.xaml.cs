@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -15,16 +16,22 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace SRS_Maker.View
 {
-    public partial class MCU_FBL_MEM : UserControl
+    public partial class MCU_FBL_MEM : UserControl, INotifyPropertyChanged
     {
+        public Pins Ports { get; set; }
+        public Mcu Mcu { get; set; }
+        public ObservableCollection<ExternalE2PRom> externalE2PRomList { get; set; }
+        public ObservableCollection<string> BootAddressList { get; set; }
+        public ObservableCollection<string> ClockOutput_Divider_List { get; set; }
+        
         public MCU_FBL_MEM()
         {
-            InitializeMcuList();
-            InitializeExternalE2PRomList();
             InitializeBootAddressList();
+            Initialize_ClockOutput_Divider_List();
             
             DataContext = this;
 
@@ -32,28 +39,7 @@ namespace SRS_Maker.View
         }
 
         #region combobox_itemsource
-
-        public ObservableCollection<Mcu> mcuList { get; set; }
-        private void InitializeMcuList()
-        {
-            mcuList = new ObservableCollection<Mcu>();
-
-            mcuList.Add(new Mcu("MPC5603", new List<string> { "100 Pin", "144 Pin" }));
-            mcuList.Add(new Mcu("MPC5604", new List<string> { "100 Pin" }));
-            mcuList.Add(new Mcu("MPC5605", new List<string> { "100 Pin" }));
-            mcuList.Add(new Mcu("MPC5606", new List<string> { "100 Pin" }));
-            mcuList.Add(new Mcu("MPC5607", new List<string> { "100 Pin" }));
-        }
-
-        public ObservableCollection<ExternalE2PRom> externalE2PRomList { get; set; }
-        private void InitializeExternalE2PRomList()
-        {
-            externalE2PRomList = new ObservableCollection<ExternalE2PRom>();
-
-            externalE2PRomList.Add(new ExternalE2PRom() { Name = "NOT Ready", Size = "", Budrate = "", PolPolarityPhase = "" });
-        }
-
-        public ObservableCollection<string> BootAddressList { get; set; }
+        
         private void InitializeBootAddressList()
         {
             BootAddressList = new ObservableCollection<string>();
@@ -61,15 +47,21 @@ namespace SRS_Maker.View
             BootAddressList.Add("0x0000~0x8000");
             BootAddressList.Add("0x8000~0xC000");
         }
-      
         
-        
+        private void Initialize_ClockOutput_Divider_List()
+        {
+            ClockOutput_Divider_List = new ObservableCollection<string>();
+
+            ClockOutput_Divider_List.Add("1");
+            ClockOutput_Divider_List.Add("2");
+            ClockOutput_Divider_List.Add("4");
+            ClockOutput_Divider_List.Add("8");
+        }
+
         #endregion
 
         #region combobox_selected_item
 
-        public Mcu selectedMcu { get; set; }
-        public ExternalE2PRom selectedExternalE2PRom { get; set; }
         public string selectedBootAddress { get; set; }
 
         #endregion
@@ -77,8 +69,77 @@ namespace SRS_Maker.View
         #region component_callback
         private void SelectedMcuUpdate(object sender, SelectionChangedEventArgs e)
         {
-            PinCombo.DataContext = selectedMcu;
+            Mcu.SelectedMcu = (Mcu)ComboBox_McuModel.SelectedItem; ;
+            ComboBox_PinPackage.DataContext = Mcu.SelectedMcu;
         }
         #endregion
+
+        private void ComboBox_MCU_DropDownOpened(object sender, EventArgs e)
+        {
+            if (ComboBox_McuModel.ItemsSource == null)
+            {
+                ComboBox_McuModel.ItemsSource = Mcu.McuList;
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(name));
+            }
+        }
+
+        private void RadioBtn_ExternalE2PRom_Checked(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Not supported yet.");
+
+            RadioButton_InternalEEPRom.IsChecked = true;
+        }
+
+        private void RadioButton_FblBuildDate_Auto_Checked(object sender, RoutedEventArgs e)
+        {
+            if (DatePicker_FBL_BuildDate_Manual != null)
+            {
+                DatePicker_FBL_BuildDate_Manual.IsEnabled = false;
+            }
+        }
+
+        private void RadioButton_FblBuildDate_Manual_Checked(object sender, RoutedEventArgs e)
+        {
+            DatePicker_FBL_BuildDate_Manual.IsEnabled = true;
+        }
+
+        private void CheckBox_ClockOutput_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton_ClockOutput_FXOSC.IsEnabled = true;
+            RadioButton_ClockOutput_FMPLL.IsEnabled = true;
+            RadioButton_ClockOutput_FIRC.IsEnabled  = true;
+            ComboBox_ClockOutput_Divider.IsEnabled  = true;
+
+            RadioButton_ClockOutput_FXOSC.IsChecked = true;
+
+            ComboBox_ClockOutput_Divider.IsEnabled  =  true;
+            ComboBox_ClockOutput_Divider.SelectedIndex = 0;
+
+        }
+
+        private void CheckBox_ClockOutput_Unchecked(object sender, RoutedEventArgs e)
+        {
+            RadioButton_ClockOutput_FXOSC.IsEnabled = false;
+            RadioButton_ClockOutput_FMPLL.IsEnabled = false;
+            RadioButton_ClockOutput_FIRC.IsEnabled  = false;
+            
+
+            RadioButton_ClockOutput_FXOSC.IsChecked = false;
+            RadioButton_ClockOutput_FMPLL.IsChecked = false;
+            RadioButton_ClockOutput_FIRC.IsChecked  = false;
+            
+            ComboBox_ClockOutput_Divider.IsEnabled  = false;
+            ComboBox_ClockOutput_Divider.SelectedIndex = -1;
+        }
+
     }
 }
