@@ -15,10 +15,10 @@
                         <Label Content="(Low Power Task)" Margin="40,82,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="7"/>
                         <Label Content="Background Task" Margin="0,130,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="9.333"/>
                         <Label Content="Event Manager" Margin="0,180,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="9.333"/>
-                        <TextBox Margin="5,50,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100"/>
-                        <TextBox Margin="5,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100"/>
-                        <TextBox Margin="5,150,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100"/>
-                        <TextBox Margin="5,200,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100"/>
+                        <TextBox x:Name="TextBox_Stack_FG1" Margin="6,50,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100"/>
+                        <TextBox x:Name="TextBox_Stack_FG2" Margin="5,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100"/>
+                        <TextBox x:Name="TextBox_Stack_Event" Margin="5,150,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100"/>
+                        <TextBox x:Name="TextBox_Stack_BG" Margin="5,200,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100"/>
                     </Grid>
                 </Border>
 
