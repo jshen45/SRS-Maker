@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SRS_Maker.Model
 {
-    public class ExternalE2PRom
+    public class ExternalEeprom
     {
         public string Name { get; set; }
         public string Size { get; set; }

@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="SRS_Maker.View.COM"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SRS_Maker.View"
+             mc:Ignorable="d" 
+             >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.ComboBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.TextBox.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="StandardComboBox" TargetType="{x:Type ComboBox}" BasedOn="{StaticResource MetroComboBox}">
+                
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="BorderThickness" Value="1" />
+                
+            </Style>
+            <Style x:Key="SrsMakerDataGridColumnHeader" TargetType="DataGridColumnHeader" BasedOn="{StaticResource MetroDataGridColumnHeader}">
+                <Setter Property="FontSize" Value="8" />
+            </Style>
+        </ResourceDictionary>
+
+    </UserControl.Resources>
+
+
+    <Grid>
+        <GroupBox Header="CAN">
+            <Grid>
+                <DataGrid x:Name="DataGrid_CAN" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="400" Width="1000" BorderThickness="1" BorderBrush="LightGray" ItemsSource="{Binding CanConfig}" AutoGenerateColumns="False" ColumnHeaderStyle="{StaticResource SrsMakerDataGridColumnHeader}" BeginningEdit="DataGrid_CAN_BeginningEdit">
+                    <DataGrid.Columns>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Driver"  Header="Driver"       SelectedItemBinding="{Binding Driver}"   ElementStyle="{StaticResource StandardComboBox}" Width="55" ItemsSource="{Binding Path=DataContext.DriverIndex, RelativeSource={RelativeSource Findancestor, AncestorType={x:Type Window}}}"/>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Phy"     Header="Phy Channel"  SelectedItemBinding="{Binding Phy}"      ElementStyle="{StaticResource StandardComboBox}" Width="80"/>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Usage"   Header="Usage"        SelectedItemBinding="{Binding Usage}"    ElementStyle="{StaticResource StandardComboBox}" Width="70"/>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_IC"      Header="IC"           SelectedItemBinding="{Binding IC}"       ElementStyle="{StaticResource StandardComboBox}" Width="80"/>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Tx"      Header="Tx"           SelectedItemBinding="{Binding Tx}"       ElementStyle="{StaticResource StandardComboBox}" Width="50"/>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Rx"      Header="Rx"           SelectedItemBinding="{Binding Rx}"       ElementStyle="{StaticResource StandardComboBox}" Width="50"/>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Err"     Header="Err"          SelectedItemBinding="{Binding Err}"      ElementStyle="{StaticResource StandardComboBox}" Width="50"/>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Control" Header="Control Type" SelectedItemBinding="{Binding Control}"  ElementStyle="{StaticResource StandardComboBox}" Width="85"/>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_EN"      Header="EN"           SelectedItemBinding="{Binding EN}"       ElementStyle="{StaticResource StandardComboBox}" Width="50"/>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_STN"     Header="STN"          SelectedItemBinding="{Binding STN}"      ElementStyle="{StaticResource StandardComboBox}" Width="50"/>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_NM"      Header="NM Type"     SelectedItemBinding="{Binding Buadrate}"  ElementStyle="{StaticResource StandardComboBox}" Width="75"/>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_CanRate" Header="Buadrate"     SelectedItemBinding="{Binding Buadrate}" ElementStyle="{StaticResource StandardComboBox}" Width="75"/>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_NBT"      Header="NBT"     SelectedItemBinding="{Binding Buadrate}"  ElementStyle="{StaticResource StandardComboBox}" Width="60"/>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_SP"      Header="SP"     SelectedItemBinding="{Binding Buadrate}"  ElementStyle="{StaticResource StandardComboBox}" Width="60"/>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_SJW"      Header="SJW"     SelectedItemBinding="{Binding Buadrate}"  ElementStyle="{StaticResource StandardComboBox}" Width="60"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</UserControl>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SRS_Maker.Model
 {
-    public class SwpTask
+    public class PlatformTask
     {
         public string Name { get; set; }
         public int Priority { get; set; }

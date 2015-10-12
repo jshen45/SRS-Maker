@@ -1,4 +1,5 @@
-﻿using SRS_Maker.Model;
+﻿using SRS_Maker.Data;
+using SRS_Maker.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace SRS_Maker.View
     public partial class IO : UserControl
     {
         public List<string> PortList { get; set; }
-        public List<Pins> Ports { get; set; }
+        public List<Pin> Ports { get; set; }
         public Pins SelectedPort { get; set; }
         
         public IO()
@@ -36,7 +37,7 @@ namespace SRS_Maker.View
 
         private void InitializePortList()
         {
-            Ports = new List<Pins>();
+            Ports = new List<Pin>();
             PortList = new List<string>();
             Pins port = new Pins("144 Pin");
             Ports = port.PinList;

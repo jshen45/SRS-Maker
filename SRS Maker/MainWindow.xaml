@@ -23,6 +23,9 @@
             <TabItem Header="CAN SPI ASC UDS">
                 <View:CAN_UDS_SPI_ASC x:Name="com_tab"/>
             </TabItem>
+            <TabItem Header="COMS">
+                <View:COM x:Name="com2_tab"/>
+            </TabItem>
         </TabControl>
         <Button x:Name="button" Content="SRS GEN" HorizontalAlignment="Left" Margin="1242,10,0,0" VerticalAlignment="Top" Width="90" Height="29" Click="XmlGenerate"/>
     </Grid>

@@ -17,14 +17,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MahApps.Metro.Controls.Dialogs;
+using SRS_Maker.Data;
 
 namespace SRS_Maker.View
 {
     public partial class MCU_FBL_MEM : UserControl, INotifyPropertyChanged
     {
-        public Pins Ports { get; set; }
-        public Mcu Mcu { get; set; }
-        public ObservableCollection<ExternalE2PRom> externalE2PRomList { get; set; }
+        public Pins PinConfig { get; set; }
+        public Mcus McuConfig { get; set; }
+        public ObservableCollection<ExternalEeprom> externalE2PRomList { get; set; }
         public ObservableCollection<string> BootAddressList { get; set; }
         public ObservableCollection<string> ClockOutput_Divider_List { get; set; }
         
@@ -69,8 +70,8 @@ namespace SRS_Maker.View
         #region component_callback
         private void SelectedMcuUpdate(object sender, SelectionChangedEventArgs e)
         {
-            Mcu.SelectedMcu = (Mcu)ComboBox_McuModel.SelectedItem; ;
-            ComboBox_PinPackage.DataContext = Mcu.SelectedMcu;
+            McuConfig.SelectedMcu = (Mcu)ComboBox_McuModel.SelectedItem; ;
+            ComboBox_PinPackage.DataContext = McuConfig.SelectedMcu;
         }
         #endregion
 
@@ -78,7 +79,7 @@ namespace SRS_Maker.View
         {
             if (ComboBox_McuModel.ItemsSource == null)
             {
-                ComboBox_McuModel.ItemsSource = Mcu.McuList;
+                ComboBox_McuModel.ItemsSource = McuConfig.McuList;
             }
         }
 

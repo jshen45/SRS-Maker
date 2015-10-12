@@ -16,26 +16,30 @@ using MahApps.Metro.Controls;
 
 using SRS_Maker.Model;
 using SRS_Maker.View;
+using SRS_Maker.Data;
 
 namespace SRS_Maker
 {
     public partial class MainWindow : MetroWindow
     {
         private XmlGenerator xmlGenerator { get; set; }
-        public Pins Ports;
-        public Mcu Mcus;
+
+        public Pins PinObj;
+        public Mcus McuObj;
 
         public MainWindow()
         {
-            Ports = new Pins("144 Pin");
-            Mcus = new Mcu();
+            PinObj = new Pins("144 Pin");
+            McuObj = new Mcus();
             
             InitializeComponent();
 
-            general_tab.Ports = this.Ports;
-            general_tab.Mcu = this.Mcus;
+            general_tab.PinConfig = this.PinObj;
+            general_tab.McuConfig = this.McuObj;
             
-            os_tab.Ports = this.Ports;
+            os_tab.PinConfig = PinObj;
+
+            com2_tab.PinConfig = this.PinObj;
         }
 
         private void XmlGenerate(object sender, RoutedEventArgs e)

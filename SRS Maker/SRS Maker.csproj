@@ -62,9 +62,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\ExternalE2PRom.cs" />
+    <Compile Include="Data\Mcus.cs" />
+    <Compile Include="Data\Pins.cs" />
+    <Compile Include="Data\PlatformTasks.cs" />
+    <Compile Include="Model\Can.cs" />
+    <Compile Include="Model\ExternalEeprom.cs" />
     <Compile Include="Model\Pin.cs" />
-    <Compile Include="Model\SwpTask.cs" />
+    <Compile Include="Model\PlatformTask.cs" />
+    <Compile Include="Model\Timer.cs" />
+    <Compile Include="View\COM.xaml.cs">
+      <DependentUpon>COM.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\OS_CORE.xaml.cs">
       <DependentUpon>OS_CORE.xaml</DependentUpon>
     </Compile>
@@ -95,6 +103,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\CAN_UDS_SPI_ASC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\COM.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

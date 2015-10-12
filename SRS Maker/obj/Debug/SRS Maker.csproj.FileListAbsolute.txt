@@ -59,3 +59,6 @@ C:\Users\Administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker
 C:\Users\Administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS Maker.csproj.GenerateResource.Cache
 C:\Users\Administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS Maker.exe
 C:\Users\Administrator\documents\visual studio 2013\Projects\SRS Maker\SRS Maker\obj\Debug\SRS Maker.pdb
+C:\Users\minu\SRS-Maker\SRS Maker\obj\Debug\SRS Maker.csproj.ResolveComReference.cache
+C:\Users\minu\SRS-Maker\SRS Maker\obj\Debug\View\COM.g.cs
+C:\Users\minu\SRS-Maker\SRS Maker\obj\Debug\View\COM.baml

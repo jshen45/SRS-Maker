@@ -26,6 +26,15 @@ namespace SRS_Maker
             this.io_tab = io_tab;
             this.com_tab = com_tab;
             this.os_tab = os_tab;
+
+            WordGen();
+
+            XmlGen();
+            
+        }
+
+        private void WordGen()
+        {
             
             Word._Application WordApplication;
             WordApplication = new Word.Application();
@@ -36,10 +45,10 @@ namespace SRS_Maker
 
             string EndOfDocFlag = "\\endofdoc";
 
-            Word.Range AtEndOfDoc = Doc.Bookmarks.get_Item(EndOfDocFlag).Range;;
-            
+            Word.Range AtEndOfDoc = Doc.Bookmarks.get_Item(EndOfDocFlag).Range; ;
+
             /* 1 Page */
-            
+
             // Source
             List<string> McuTableParameters = new List<string>(new string[] { "Model", "PinPackage", "Quartz Clock", "Core Clock", "Periperal 1 Clock", "Periperal 2 Clock", "Periperal 3 Clock" });
             List<string> McuTableValues = new List<string>(new string[] { general_tab.ComboBox_McuModel.Text, general_tab.ComboBox_PinPackage.Text, general_tab.TextBox_Clock_Quartz.Text, general_tab.TextBox_Clock_Core.Text, general_tab.TextBox_Clock_Peripheral1.Text, general_tab.TextBox_Clock_Peripheral2.Text, general_tab.TextBox_Clock_Peripheral3.Text });
@@ -56,14 +65,14 @@ namespace SRS_Maker
                 }
                 else
                     if (general_tab.RadioButton_ClockOutput_FMPLL.IsChecked == true)
-                    {
-                        ClockOutputValues[1] = "FMPLL";
-                    }
-                    else
+                {
+                    ClockOutputValues[1] = "FMPLL";
+                }
+                else
                         if (general_tab.RadioButton_ClockOutput_FXOSC.IsChecked == true)
-                        {
-                            ClockOutputValues[1] = "FXOSC";
-                        }
+                {
+                    ClockOutputValues[1] = "FXOSC";
+                }
             }
             else
             {
@@ -76,7 +85,7 @@ namespace SRS_Maker
             MakeVTable(ref Doc, "Clock Output", ClockOutputParameters, ClockOutputValues);
             BreakPage(ref Doc);
             H1(ref Doc, "OS");
-            List<string> StackTableParameters = new List<string>(new string[] { "FG1 Task", "FG2 Task (Include Low Power Task)", "Event", "Background Task"});
+            List<string> StackTableParameters = new List<string>(new string[] { "FG1 Task", "FG2 Task (Include Low Power Task)", "Event", "Background Task" });
             List<string> StackTableValues = new List<string>(new string[] { os_tab.TextBox_Stack_FG1.Text, os_tab.TextBox_Stack_FG2.Text, os_tab.TextBox_Stack_Event.Text, os_tab.TextBox_Stack_BG.Text });
             MakeVTable(ref Doc, "Stack", StackTableParameters, StackTableValues);
 
@@ -87,9 +96,9 @@ namespace SRS_Maker
             List<string> TaskPreemtiveTableValues = new List<string>();
             List<string> TaskOffsetTableValues = new List<string>();
             List<string> TaskCycleTableValues = new List<string>();
-            foreach (SwpTask task in os_tab.DataGrid_Task.ItemsSource as IEnumerable)
+            foreach (Model.PlatformTask task in os_tab.DataGrid_Task.ItemsSource as IEnumerable)
             {
-                TaskNameTableValues.Add(task.Name.Remove(0,5));
+                TaskNameTableValues.Add(task.Name.Remove(0, 5));
                 TaskPriorityTableValues.Add(task.Priority.ToString());
                 TaskAutoStartTableValues.Add(task.Preemptive.ToString());
                 TaskPreemtiveTableValues.Add(task.AutoStart.ToString());
@@ -119,177 +128,256 @@ namespace SRS_Maker
             BreakPage(ref Doc);
 
             /* 2 Page */
-            
+
             object szPath = "test.docx";
             Doc.SaveAs(ref szPath);
+        }
 
-
-            if ( emptyValueCheck() )
+        private void XmlGen()
+        {
+            if (EmptyValueCheck())
             {
                 XmlWriterSettings xmlWriterSettings = new XmlWriterSettings();
                 xmlWriterSettings.NewLineOnAttributes = true;
                 xmlWriterSettings.Indent = true;
 
-                using (XmlWriter writer = XmlWriter.Create("SRS.xml", xmlWriterSettings))
+                XmlWriter writer = XmlWriter.Create("SRS.xml", xmlWriterSettings);
+                writer.WriteStartDocument(); 
                 {
-                    writer.WriteStartDocument();
                     writer.WriteStartElement("Config");
                     {
-                        writer.WriteStartElement("Mcu");
-                        {
-                            writer.WriteAttributeString("Model", general_tab.ComboBox_McuModel.Text);
-                            writer.WriteAttributeString("PinPackage", general_tab.ComboBox_PinPackage.Text);
-                            writer.WriteStartElement("Clock");
-                            {
-                                writer.WriteAttributeString("Quartz", general_tab.TextBox_Clock_Quartz.Text);
-                                writer.WriteAttributeString("Core", general_tab.TextBox_Clock_Core.Text);
-                                writer.WriteAttributeString("Peripheral1", general_tab.TextBox_Clock_Peripheral1.Text);
-                                writer.WriteAttributeString("Peripheral2", general_tab.TextBox_Clock_Peripheral2.Text);
-                                writer.WriteAttributeString("Peripheral3", general_tab.TextBox_Clock_Peripheral3.Text);
-                                writer.WriteStartElement("ClockOutput");
-                                {
-                                    writer.WriteAttributeString("Use", general_tab.CheckBox_ClockOutput.IsChecked.ToString());
-                                    
-                                    if (general_tab.CheckBox_ClockOutput.IsChecked == true)
-                                    {
-                                        if (general_tab.RadioButton_ClockOutput_FIRC.IsChecked == true)
-                                        {
-                                            writer.WriteAttributeString("Source", "FIRC");
-                                        } else
-                                        if (general_tab.RadioButton_ClockOutput_FMPLL.IsChecked == true)
-                                        {
-                                            writer.WriteAttributeString("Source", "FMPLLRC");
-                                        } else
-                                        if (general_tab.RadioButton_ClockOutput_FXOSC.IsChecked == true)
-                                        {
-                                            writer.WriteAttributeString("Source", "FXOSC");
-                                        }
-                                        writer.WriteAttributeString("Divider", general_tab.ComboBox_ClockOutput_Divider.Text);
-                                    }
-                                } writer.WriteEndElement(); // ClockOutput
-                            } writer.WriteEndElement(); // Clock
-                        } writer.WriteEndElement(); // Mcu
-
-                        writer.WriteStartElement("OS");
-                        {
-                            writer.WriteStartElement("Task");
-                            {
-                                var tasks = os_tab.DataGrid_Task.ItemsSource as IEnumerable;
-                                foreach (SwpTask task in tasks)
-                                {
-                                    writer.WriteStartElement(task.Name);
-                                    {
-                                        writer.WriteAttributeString("Priority", task.Priority.ToString());
-                                        writer.WriteAttributeString("Preemptive", task.Preemptive.ToString());
-                                        writer.WriteAttributeString("AutoStart", task.AutoStart.ToString());
-                                        if (task.AlarmOffset != null && task.AlarmCycle != null)
-                                        {
-                                            writer.WriteAttributeString("AlarmOffset", task.AlarmOffset.ToString());
-                                            writer.WriteAttributeString("AlarmCycle", task.AlarmCycle.ToString());
-                                        }
-                                    } writer.WriteEndElement(); // task.Name
-                                }
-                            } writer.WriteEndElement(); // Task
-
-                            writer.WriteStartElement("Debugging");
-                            {
-                                writer.WriteAttributeString("CpuLoad", os_tab.CpuLoad.IsChecked.ToString());
-                                writer.WriteAttributeString("ItLoad", os_tab.ItLoad.IsChecked.ToString());
-                                writer.WriteAttributeString("StackDepth", os_tab.StackDepth.IsChecked.ToString());
-                                writer.WriteAttributeString("TaskMonitoring", os_tab.TaskMonitoring.IsChecked.ToString());
-                            } writer.WriteEndElement(); // Debugging
-                        }
-                        writer.WriteStartElement("FBL");
-                        {
-                            writer.WriteElementString("STmin", "5");
-                        } writer.WriteEndElement(); // F
-
-                    } writer.WriteEndElement();
-                    writer.WriteEndDocument();
-                }
-
+                        McuPage(ref writer);
+                        OsPage(ref writer);
+                    } writer.WriteEndElement(); //Config
+                } writer.WriteEndDocument();
             }
         }
 
-        private bool emptyValueCheck()
+        private bool EmptyValueCheck()
         {
             return true;
         }
 
+        private void McuPage(ref XmlWriter writer)
+        {
+            writer.WriteStartElement("Mcu");
+            {
+                writer.WriteAttributeString("Model", general_tab.ComboBox_McuModel.Text);
+                writer.WriteAttributeString("PinPackage", general_tab.ComboBox_PinPackage.Text);
+                writer.WriteStartElement("Clock");
+                {
+                    writer.WriteAttributeString("Quartz", general_tab.TextBox_Clock_Quartz.Text);
+                    writer.WriteAttributeString("Core", general_tab.TextBox_Clock_Core.Text);
+                    writer.WriteAttributeString("Peripheral1", general_tab.TextBox_Clock_Peripheral1.Text);
+                    writer.WriteAttributeString("Peripheral2", general_tab.TextBox_Clock_Peripheral2.Text);
+                    writer.WriteAttributeString("Peripheral3", general_tab.TextBox_Clock_Peripheral3.Text);
+                    writer.WriteStartElement("ClockOutput");
+                    {
+                        writer.WriteAttributeString("Use", general_tab.CheckBox_ClockOutput.IsChecked.ToString());
+
+                        if (general_tab.CheckBox_ClockOutput.IsChecked == true)
+                        {
+                            if (general_tab.RadioButton_ClockOutput_FIRC.IsChecked == true)
+                            {
+                                writer.WriteAttributeString("Source", "FIRC");
+                            }
+                            else
+                            if (general_tab.RadioButton_ClockOutput_FMPLL.IsChecked == true)
+                            {
+                                writer.WriteAttributeString("Source", "FMPLLRC");
+                            }
+                            else
+                            if (general_tab.RadioButton_ClockOutput_FXOSC.IsChecked == true)
+                            {
+                                writer.WriteAttributeString("Source", "FXOSC");
+                            }
+                            writer.WriteAttributeString("Divider", general_tab.ComboBox_ClockOutput_Divider.Text);
+                        }
+                    }
+                    writer.WriteEndElement(); // ClockOutput
+                }
+                writer.WriteEndElement(); // Clock
+
+                writer.WriteStartElement("FBL");
+                {
+                    writer.WriteElementString("STmin", "5");
+                }
+                writer.WriteEndElement(); // FBL
+            }
+            writer.WriteEndElement(); // Mcu
+
+        }
+        private void OsPage(ref XmlWriter writer)
+        {
+            writer.WriteStartElement("OS");
+            {
+                writer.WriteStartElement("Task");
+                {
+                    var tasks = os_tab.DataGrid_Task.ItemsSource as IEnumerable;
+                    foreach (Model.PlatformTask task in tasks)
+                    {
+                        writer.WriteStartElement(task.Name);
+                        {
+                            writer.WriteAttributeString("Priority", task.Priority.ToString());
+                            writer.WriteAttributeString("Preemptive", task.Preemptive.ToString());
+                            writer.WriteAttributeString("AutoStart", task.AutoStart.ToString());
+                            if (task.AlarmOffset != null && task.AlarmCycle != null)
+                            {
+                                writer.WriteAttributeString("AlarmOffset", task.AlarmOffset.ToString());
+                                writer.WriteAttributeString("AlarmCycle", task.AlarmCycle.ToString());
+                            }
+                        }
+                        writer.WriteEndElement(); // task.Name
+                    }
+                }
+                writer.WriteEndElement(); // Task
+
+                writer.WriteStartElement("Debugging");
+                {
+                    writer.WriteAttributeString("CpuLoad", os_tab.CpuLoad.IsChecked.ToString());
+                    writer.WriteAttributeString("ItLoad", os_tab.ItLoad.IsChecked.ToString());
+                    writer.WriteAttributeString("StackDepth", os_tab.StackDepth.IsChecked.ToString());
+                    writer.WriteAttributeString("TaskMonitoring", os_tab.TaskMonitoring.IsChecked.ToString());
+                }
+                writer.WriteEndElement(); // Debugging
+            }
+            writer.WriteEndElement(); // OS
+
+        }
+        
+  
         private void MakeVTable(ref Word._Document Doc, string TableName, List<string> Header, List<string> Value)
         {
-            string EndOfDocFlag = "\\endofdoc";
-
-            Word.Paragraph McuParagraph;
-            Word.Range AtEndOfDoc;
-            AtEndOfDoc = Doc.Bookmarks.get_Item(EndOfDocFlag).Range;
-            McuParagraph = Doc.Content.Paragraphs.Add(AtEndOfDoc);
-            McuParagraph.Range.Font.Size = 20;
-            McuParagraph.Range.Text = TableName;
-
-            Word.Table McuTable;
-            AtEndOfDoc = Doc.Bookmarks.get_Item(EndOfDocFlag).Range;
-            McuTable = Doc.Tables.Add(AtEndOfDoc, Header.Count, 2);
-            McuTable.Borders.InsideLineStyle = Word.WdLineStyle.wdLineStyleSingle;
-            McuTable.Borders.OutsideLineStyle = Word.WdLineStyle.wdLineStyleSingle;
-
-            foreach (var x in Header.Select((value, index) => new { value, index }))
-            {
-                McuTable.Cell(x.index + 1, 1).Range.Text = x.value;
-                McuTable.Cell(x.index + 1, 1).Range.Shading.BackgroundPatternColor = Word.WdColor.wdColorGray10;
-                McuTable.Cell(x.index + 1, 1).Range.Font.Bold = 1;
-            }
-            McuTable.Columns[1].AutoFit();
-
-            foreach (var x in Value.Select((value, index) => new { value, index }))
-            {
-                McuTable.Cell(x.index + 1, 2).Range.Text = x.value;
-            }
-            McuTable.Columns[2].AutoFit();
-        }
-
-        private void MakeHTable(ref Word._Document Doc, string TableName, List<string> Header, params List<string>[] ValueLists)
-        {
-            string EndOfDocFlag = "\\endofdoc";
-
-            Word.Paragraph McuParagraph;
-            Word.Range AtEndOfDoc;
-            AtEndOfDoc = Doc.Bookmarks.get_Item(EndOfDocFlag).Range;
-            McuParagraph = Doc.Content.Paragraphs.Add(AtEndOfDoc);
-            McuParagraph.Range.Font.Size = 16;
-            McuParagraph.Range.Text = TableName;
-            McuParagraph.Range.InsertParagraphAfter();
-
-            Word.Table McuTable;
-            AtEndOfDoc = Doc.Bookmarks.get_Item(EndOfDocFlag).Range;
-            McuTable = Doc.Tables.Add(AtEndOfDoc, ValueLists[0].Count + 1, Header.Count);
-            McuTable.Borders.InsideLineStyle = Word.WdLineStyle.wdLineStyleSingle;
-            McuTable.Borders.OutsideLineStyle = Word.WdLineStyle.wdLineStyleSingle;
-
-            foreach (var row in Header.Select((value, index) => new { value, index }))
-            {
-                McuTable.Cell(1, row.index + 1).Range.Text = row.value;
-                McuTable.Cell(1, row.index + 1).Range.Shading.BackgroundPatternColor = Word.WdColor.wdColorGray10;
-                McuTable.Cell(1, row.index + 1).Range.Font.Bold = 1;
-            }
-
-            foreach (var col in ValueLists.Select((value, index) => new {value, index}))
-            {
-                foreach (var row in col.value.Select((value, index) => new { value, index }))
-                {
-                    McuTable.Cell(row.index + 2, col.index + 1).Range.Text = row.value;
-                }
-                McuTable.Columns[col.index + 1].AutoFit();
-            }
-            McuTable.Columns[1].AutoFit();
-        }
-
-        private void BreakPage(ref Word._Document Doc)
-        {
-            string EndOfDocFlag = "\\endofdoc";
-
             try
             {
+                string EndOfDocFlag = "\\endofdoc";
+
+                Word.Paragraph McuParagraph;
+                Word.Range AtEndOfDoc;
+                AtEndOfDoc = Doc.Bookmarks.get_Item(EndOfDocFlag).Range;
+                McuParagraph = Doc.Content.Paragraphs.Add(AtEndOfDoc);
+                McuParagraph.Range.Font.Size = 20;
+                McuParagraph.Range.Text = TableName;
+
+                Word.Table McuTable;
+                AtEndOfDoc = Doc.Bookmarks.get_Item(EndOfDocFlag).Range;
+                McuTable = Doc.Tables.Add(AtEndOfDoc, Header.Count, 2);
+                McuTable.Borders.InsideLineStyle = Word.WdLineStyle.wdLineStyleSingle;
+                McuTable.Borders.OutsideLineStyle = Word.WdLineStyle.wdLineStyleSingle;
+
+                foreach (var x in Header.Select((value, index) => new { value, index }))
+                {
+                    McuTable.Cell(x.index + 1, 1).Range.Text = x.value;
+                    McuTable.Cell(x.index + 1, 1).Range.Shading.BackgroundPatternColor = Word.WdColor.wdColorGray10;
+                    McuTable.Cell(x.index + 1, 1).Range.Font.Bold = 1;
+                }
+                McuTable.Columns[1].AutoFit();
+
+                foreach (var x in Value.Select((value, index) => new { value, index }))
+                {
+                    McuTable.Cell(x.index + 1, 2).Range.Text = x.value;
+                }
+                McuTable.Columns[2].AutoFit();
+            }
+            catch
+            {
+
+            }
+        }
+        private void MakeHTable(ref Word._Document Doc, string TableName, List<string> Header, params List<string>[] ValueLists)
+        {
+            try
+            {
+                string EndOfDocFlag = "\\endofdoc";
+
+
+                Word.Paragraph McuParagraph;
+                Word.Range AtEndOfDoc;
+                AtEndOfDoc = Doc.Bookmarks.get_Item(EndOfDocFlag).Range;
+                McuParagraph = Doc.Content.Paragraphs.Add(AtEndOfDoc);
+                McuParagraph.Range.Font.Size = 16;
+                McuParagraph.Range.Text = TableName;
+                McuParagraph.Range.InsertParagraphAfter();
+
+                Word.Table McuTable;
+                AtEndOfDoc = Doc.Bookmarks.get_Item(EndOfDocFlag).Range;
+                McuTable = Doc.Tables.Add(AtEndOfDoc, ValueLists[0].Count + 1, Header.Count);
+                McuTable.Borders.InsideLineStyle = Word.WdLineStyle.wdLineStyleSingle;
+                McuTable.Borders.OutsideLineStyle = Word.WdLineStyle.wdLineStyleSingle;
+
+                foreach (var row in Header.Select((value, index) => new { value, index }))
+                {
+                    McuTable.Cell(1, row.index + 1).Range.Text = row.value;
+                    McuTable.Cell(1, row.index + 1).Range.Shading.BackgroundPatternColor = Word.WdColor.wdColorGray10;
+                    McuTable.Cell(1, row.index + 1).Range.Font.Bold = 1;
+                }
+
+                foreach (var col in ValueLists.Select((value, index) => new { value, index }))
+                {
+                    foreach (var row in col.value.Select((value, index) => new { value, index }))
+                    {
+                        McuTable.Cell(row.index + 2, col.index + 1).Range.Text = row.value;
+                    }
+                    McuTable.Columns[col.index + 1].AutoFit();
+                }
+                McuTable.Columns[1].AutoFit();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void H1(ref Word._Document Doc, string str)
+        {
+            try
+            {
+                string EndOfDocFlag = "\\endofdoc";
+
+                Word.Range AtEndOfDoc;
+                AtEndOfDoc = Doc.Bookmarks.get_Item(EndOfDocFlag).Range;
+
+                Word.Paragraph McuParagraph;
+                McuParagraph = Doc.Content.Paragraphs.Add(AtEndOfDoc);
+
+                McuParagraph.Range.Font.Size = 22;
+                McuParagraph.Range.Font.Bold = 1;
+                McuParagraph.Range.Text = str;
+                McuParagraph.Range.InsertParagraphAfter();
+            }
+            catch
+            {
+
+            }
+        }
+        private void H2(ref Word._Document Doc, string str)
+        {
+            try
+            {
+                string EndOfDocFlag = "\\endofdoc";
+
+                Word.Range AtEndOfDoc;
+                AtEndOfDoc = Doc.Bookmarks.get_Item(EndOfDocFlag).Range;
+
+                Word.Paragraph McuParagraph;
+                McuParagraph = Doc.Content.Paragraphs.Add(AtEndOfDoc);
+
+                McuParagraph.Range.Font.Size = 22;
+                McuParagraph.Range.Font.Bold = 1;
+                McuParagraph.Range.Text = str;
+                McuParagraph.Range.InsertParagraphAfter();
+            }
+            catch
+            {
+
+            }
+        }
+        private void BreakPage(ref Word._Document Doc)
+        {
+            try
+            {
+                string EndOfDocFlag = "\\endofdoc";
+
                 Word.Range AtEndOfDoc;
                 AtEndOfDoc = Doc.Bookmarks.get_Item(EndOfDocFlag).Range;
                 AtEndOfDoc.InsertBreak(Word.WdBreakType.wdPageBreak);
@@ -300,51 +388,8 @@ namespace SRS_Maker
             }
         }
 
-        private void H1(ref Word._Document Doc, string str)
-        {
-            string EndOfDocFlag = "\\endofdoc";
-
-            try
-            {
-                Word.Range AtEndOfDoc;
-                AtEndOfDoc = Doc.Bookmarks.get_Item(EndOfDocFlag).Range;
-
-                Word.Paragraph McuParagraph;
-                McuParagraph = Doc.Content.Paragraphs.Add(AtEndOfDoc);
-
-                McuParagraph.Range.Font.Size = 22;
-                McuParagraph.Range.Font.Bold = 1;
-                McuParagraph.Range.Text = str;
-                McuParagraph.Range.InsertParagraphAfter();
-            }
-            catch
-            {
-
-            }
-        }
-
-        private void H1(ref Word._Document Doc, string str)
-        {
-            string EndOfDocFlag = "\\endofdoc";
-
-            try
-            {
-                Word.Range AtEndOfDoc;
-                AtEndOfDoc = Doc.Bookmarks.get_Item(EndOfDocFlag).Range;
-
-                Word.Paragraph McuParagraph;
-                McuParagraph = Doc.Content.Paragraphs.Add(AtEndOfDoc);
-
-                McuParagraph.Range.Font.Size = 22;
-                McuParagraph.Range.Font.Bold = 1;
-                McuParagraph.Range.Text = str;
-                McuParagraph.Range.InsertParagraphAfter();
-            }
-            catch
-            {
-
-            }
-        }
+        
+        
     }
 }
 
