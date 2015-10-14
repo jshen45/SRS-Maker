@@ -3,17 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:Model="clr-namespace:SRS_Maker.Model" 
+             xmlns:Model="clr-namespace:SRS_Maker.Model"
+             xmlns:Data="clr-namespace:SRS_Maker.Data"
              mc:Ignorable="d">
+    
+    <UserControl.Resources>
+        <Data:Mcus x:Key="Mcus"/>
+    </UserControl.Resources>
     <Grid>
         <GroupBox Header="MCU" HorizontalAlignment="left" Margin="0" VerticalAlignment="Top" Width="1000">
             <Grid>
                 <Border Margin="0,0,0,0" BorderBrush="LightGray" BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="128">
                     <Grid Margin="5,5,5,5">
                         <Label Content="Model" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <ComboBox x:Name="ComboBox_McuModel" Margin="0,25,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" SelectedItem="{Binding Mcu.SelectedMcu,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath ="Name" SelectionChanged="SelectedMcuUpdate" DropDownOpened="ComboBox_MCU_DropDownOpened"/>
+                        <ComboBox x:Name="ComboBox_McuModel" Margin="0,25,0,0" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="100" SelectedItem="{Binding SelectedMcu,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath ="Name"  DataContext="{StaticResource Mcus}" ItemsSource="{Binding McuList}"/>
                         <Label Content="Pin Package" Margin="0,50,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
-                        <ComboBox x:Name="ComboBox_PinPackage" Margin="0,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" ItemsSource="{Binding PinPackage}"/>
+                        <ComboBox x:Name="ComboBox_PinPackage" Margin="0,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" DataContext="{Binding ElementName=ComboBox_McuModel, Path=SelectedItem}" ItemsSource="{Binding PinPackage}"/>
                     </Grid>
                 </Border>
                 <Border Margin="125,0,0,0" BorderBrush="LightGray" BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="215">

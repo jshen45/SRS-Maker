@@ -22,7 +22,7 @@
                     </Grid>
                 </Border>
 
-                <DataGrid x:Name="DataGrid_Task" HorizontalAlignment="Left" Margin="135,0,0,0" VerticalAlignment="Top" Height="400" Width="700" BorderThickness="1" BorderBrush="LightGray" ItemsSource="{Binding SwpTaskList}" AutoGenerateColumns="False">
+                <DataGrid x:Name="DataGrid_Task" HorizontalAlignment="Left" Margin="135,0,0,0" VerticalAlignment="Top" Height="400" Width="700" BorderThickness="1" BorderBrush="LightGray" ItemsSource="{Binding SwpTaskList}" AutoGenerateColumns="False" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="200"/>
                         <DataGridTextColumn Header="Priority" Binding="{Binding Priority}" Width="60"/>

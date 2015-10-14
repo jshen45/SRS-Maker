@@ -24,43 +24,44 @@ namespace SRS_Maker.View
 
         public ObservableCollection<Can> CanConfig { get; set; }
 
-        public ObservableCollection<int> DriverIndex { get; set; }
-
-        
+        public ObservableCollection<int> CanDriverIndex { get; set; }
+        public ObservableCollection<int> CanPhysicalChannel { get; set; }
+        public ObservableCollection<string> CanUsage { get; set; }
+        public ObservableCollection<string> CanIC { get; set; }
 
         public COM()
         {
             DataContext = this;
-            DriverIndex = new ObservableCollection<int>();
-
             
+            CanConfig = new ObservableCollection<Can>();
+            CanConfig.Add(new Can() { Driver = 1 });
 
-            
+            CanDriverIndex = new ObservableCollection<int>();
+            CanDriverIndex.Add(1);
 
-            DriverIndex.Add(1);
-            DriverIndex.Add(2);
-            DriverIndex.Add(3);
-            DriverIndex.Add(4);
-            DriverIndex.Add(5);
+            CanPhysicalChannel = new ObservableCollection<int>();
+            CanPhysicalChannel.Add(1);
+            CanPhysicalChannel.Add(2);
+            CanPhysicalChannel.Add(3);
+            CanPhysicalChannel.Add(4);
+            CanPhysicalChannel.Add(5);
 
-            InitializeTaskList();
+            CanUsage = new ObservableCollection<string>();
+            CanUsage.Add("BCAN");
+            CanUsage.Add("CCAN");
+            CanUsage.Add("DCAN");
+            CanUsage.Add("MCAN");
+
+            CanIC = new ObservableCollection<string>();
+            CanIC.Add("TJA1040");
+            CanIC.Add("TJA1043");
+            CanIC.Add("TJA1051");
+            CanIC.Add("TJA1055");
+            CanIC.Add("TLE6250");
+            CanIC.Add("TLE6254");
 
             InitializeComponent();
 
-            //DataGridComboBoxColumn_Driver.ItemsSource = DriverIndex;
-            }
-
-        private void InitializeTaskList()
-        {
-            CanConfig = new ObservableCollection<Can>();
-            CanConfig.Add(new Can() { Driver = 1});
-            
-        }
-
-        private void DataGrid_CAN_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
-        {
-            int i;
-            i = 1;
         }
     }
 }
