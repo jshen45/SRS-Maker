@@ -31,7 +31,7 @@
                             <DataGridComboBoxColumn.ElementStyle>
                             <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
                                 <Setter Property="ItemsSource" Value="{Binding Path=DataContext.CanPhysicalChannel, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
-                                <EventSetter Event="SelectionChanged" Handler="test"/>
+                                
                             </Style>
                         </DataGridComboBoxColumn.ElementStyle>
                         </DataGridComboBoxColumn>
@@ -39,7 +39,7 @@
                             <DataGridComboBoxColumn.ElementStyle>
                             <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
                                 <Setter Property="ItemsSource" Value="{Binding Path=DataContext.CanUsage, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
-                                <EventSetter Event="Drop" Handler="test" />
+                                
                             </Style>
                         </DataGridComboBoxColumn.ElementStyle>
                         </DataGridComboBoxColumn>
