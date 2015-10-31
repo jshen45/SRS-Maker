@@ -209,7 +209,7 @@ namespace SRS_Maker.Data
             {
                 if (PinList == null)
                     return null;
-                var list = PinList.Select((Pin pin) => pin.Name).ToList();
+                var list = PinList.Where((Pin pin) => pin.SelectedUsage == "").Select((Pin pin) => pin.Name).ToList();
                 return list;
             }
         }

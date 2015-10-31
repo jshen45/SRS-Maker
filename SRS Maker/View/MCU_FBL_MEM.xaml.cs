@@ -27,7 +27,8 @@ namespace SRS_Maker.View
         public Mcus McuConfig { get; set; }
         public ObservableCollection<ExternalEeprom> externalE2PRomList { get; set; }
         public ObservableCollection<string> BootAddressList { get; set; }
-        public ObservableCollection<string> ClockOutput_Divider_List { get; set; }
+        public string selectedBootAddress { get; set; }
+        public ObservableCollection<int> ClockOutput_Divider_List { get; set; }
         
         public MCU_FBL_MEM()
         {
@@ -51,37 +52,22 @@ namespace SRS_Maker.View
         
         private void Initialize_ClockOutput_Divider_List()
         {
-            ClockOutput_Divider_List = new ObservableCollection<string>();
+            ClockOutput_Divider_List = new ObservableCollection<int>();
 
-            ClockOutput_Divider_List.Add("1");
-            ClockOutput_Divider_List.Add("2");
-            ClockOutput_Divider_List.Add("4");
-            ClockOutput_Divider_List.Add("8");
+            ClockOutput_Divider_List.Add(1);
+            ClockOutput_Divider_List.Add(2);
+            ClockOutput_Divider_List.Add(4);
+            ClockOutput_Divider_List.Add(8);
         }
 
         #endregion
 
         #region combobox_selected_item
 
-        public string selectedBootAddress { get; set; }
+        
 
         #endregion
 
-        #region component_callback
-        private void SelectedMcuUpdate(object sender, SelectionChangedEventArgs e)
-        {
-            McuConfig.SelectedMcu = (Mcu)ComboBox_McuModel.SelectedItem; ;
-            ComboBox_PinPackage.DataContext = McuConfig.SelectedMcu;
-        }
-        #endregion
-
-        private void ComboBox_MCU_DropDownOpened(object sender, EventArgs e)
-        {
-            if (ComboBox_McuModel.ItemsSource == null)
-            {
-                ComboBox_McuModel.ItemsSource = McuConfig.McuList;
-            }
-        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name)
