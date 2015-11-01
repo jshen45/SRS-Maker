@@ -9,17 +9,7 @@ namespace SRS_Maker.Model
 {
     public class Can : INotifyPropertyChanged
     {
-        static int _Driver;
-
-        public int Driver
-        {
-            get { return _Driver; }
-            set
-            {
-                _Driver = value;
-                OnPropertyChanged("Driver");
-            }
-        }
+        public int Driver { get; set; }
 		public int Phy { get; set; }
 		public string Usage { get; set; }
 		public string IC { get; set; }
@@ -30,6 +20,7 @@ namespace SRS_Maker.Model
 		public string STN { get; set; }
 		public string Err { get; set; }
 		public string Buadrate { get; set; }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

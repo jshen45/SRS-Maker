@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\minu\Documents\GitHub\SRS-Maker\SRS Maker\obj\Debug\
+C:\Users\minu\SRS-Maker\SRS Maker\obj\Debug\
 SRS_Maker
 none
 false
 DEBUG;TRACE
-C:\Users\minu\Documents\GitHub\SRS-Maker\SRS Maker\App.xaml
+C:\Users\minu\SRS-Maker\SRS Maker\App.xaml
 7-1480459452
 
 211049563999
-18-1533301906
+181923311086
 MainWindow.xaml;View\CAN_UDS_SPI_ASC.xaml;View\COM.xaml;View\IO.xaml;View\MCU_FBL_MEM.xaml;View\OS_CORE.xaml;View\PROJECT.xaml;
 
 False
