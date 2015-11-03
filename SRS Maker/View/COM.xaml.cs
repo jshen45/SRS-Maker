@@ -22,6 +22,8 @@ namespace SRS_Maker.View
     {
         public Pins PinConfig { get; set; }
 
+        List<Item> items = new List<Item>();
+
         public ObservableCollection<Can> CanConfig { get; set; }
 
         public ObservableCollection<int> CanDriverIndex { get; set; }
@@ -63,5 +65,21 @@ namespace SRS_Maker.View
             InitializeComponent();
 
         }
+        void test(object sender, EventArgs e)
+        {
+         
+        }
+
+        private void TextBlock_Loaded(object sender, RoutedEventArgs e)
+        {
+            var block = sender as TextBlock;
+            var item = block.Tag as Item;
+            block.Text = items.IndexOf(item).ToString();
+        }
+    }
+
+    public class Item
+    {
+        public string Name { get; set; }
     }
 }
