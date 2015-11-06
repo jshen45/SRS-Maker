@@ -65,6 +65,7 @@
     <Compile Include="Data\Mcus.cs" />
     <Compile Include="Data\Pins.cs" />
     <Compile Include="Data\PlatformTasks.cs" />
+    <Compile Include="Model\Asc.cs" />
     <Compile Include="Model\Can.cs" />
     <Compile Include="Model\ExternalEeprom.cs" />
     <Compile Include="Model\Pin.cs" />

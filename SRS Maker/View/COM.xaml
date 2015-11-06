@@ -23,35 +23,25 @@
     </UserControl.Resources>
 
     <Grid>
-        <GroupBox Header="CAN" Margin="5,5,5,211">
+        <GroupBox Header="CAN" Margin="5,5,5,256">
             <Grid>
                 <Label Content="Number of Usage CAN channel" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
                 <ComboBox x:Name="ComboBox_CanNum" HorizontalAlignment="Left" Margin="188,0,0,0" VerticalAlignment="Top" Width="90" ItemsSource="{Binding CanChannelNum}" SelectionChanged="comboBox_SelectionChanged"/>
                 <Label Content="Associated Clock" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="283,0,0,0"/>
-                <ComboBox x:Name="ComboBox_CanClock" HorizontalAlignment="Left" Margin="390,0,0,0" VerticalAlignment="Top" Width="90" ItemsSource="{Binding CanClock}"/>
+                <ComboBox x:Name="ComboBox_CanClock" HorizontalAlignment="Left" Margin="390,0,0,0" VerticalAlignment="Top" Width="100" ItemsSource="{Binding CanClock}"/>
                 <DataGrid x:Name="DataGrid_CAN" HorizontalAlignment="Left" Margin="0,35,0,0" VerticalAlignment="Top" Height="177" Width="1000" BorderThickness="1" BorderBrush="LightGray" ItemsSource="{Binding CanConfig}" AutoGenerateColumns="False" ColumnHeaderStyle="{StaticResource SrsMakerDataGridColumnHeader}" CanUserDeleteRows="False" CanUserAddRows="False" CanUserSortColumns="False">
                     <DataGrid.Resources>
                         <local:RowToIndexConv x:Key="converter"/>
                     </DataGrid.Resources>
                     <DataGrid.Columns>
-<<<<<<< HEAD
-                        <DataGridTemplateColumn  x:Name="DataGridComboBoxColumn_Driver" Header="Driver" Width="55">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Tag="{Binding}" Loaded="TextBlock_Loaded" />
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                        
-=======
-                        <DataGridTemplateColumn x:Name="DataGridComboBoxColumn_NewDriver" Header="Driver" Width="55" >
+                        <DataGridTemplateColumn x:Name="DataGridComboBoxColumn_NewDriver" Header="Driver" Width="50" >
                             <DataGridTemplateColumn.CellTemplate >
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Path=., RelativeSource={RelativeSource AncestorType=DataGridRow}, Converter={StaticResource converter}}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Usage"   Header="Usage" SelectedItemBinding="{Binding Usage,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="70">
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Usage" Header="Usage" SelectedItemBinding="{Binding Usage,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="67">
                             <DataGridComboBoxColumn.ElementStyle>
                                 <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
                                     <Setter Property="ItemsSource" Value="{Binding Path=DataContext.CanUsage, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
@@ -59,104 +49,219 @@
                                 </Style>
                             </DataGridComboBoxColumn.ElementStyle>
                         </DataGridComboBoxColumn>
->>>>>>> origin/master
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Phy"     Header="Phy Channel"  SelectedItemBinding="{Binding Phy,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80">
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Phy" Header="Phy Channel" SelectedItemBinding="{Binding Phy,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80">
                             <DataGridComboBoxColumn.ElementStyle>
                                 <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
                                     <Setter Property="ItemsSource" Value="{Binding Path=DataContext.CanPhysicalChannel, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
-<<<<<<< HEAD
-                                    <EventSetter Event="SelectionChanged" Handler="test"/>
                                 </Style>
                             </DataGridComboBoxColumn.ElementStyle>
                         </DataGridComboBoxColumn>
-                        
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Usage"   Header="Usage" SelectedItemBinding="{Binding Usage,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="70">
-                            <DataGridComboBoxColumn.ElementStyle>
-                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
-                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.CanUsage, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
-=======
-                                </Style>
-                            </DataGridComboBoxColumn.ElementStyle>
-                        </DataGridComboBoxColumn>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_IC"      Header="IC"           SelectedItemBinding="{Binding IC,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80">
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_IC" Header="IC" SelectedItemBinding="{Binding IC,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80">
                             <DataGridComboBoxColumn.ElementStyle>
                                 <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
                                     <Setter Property="ItemsSource" Value="{Binding Path=DataContext.CanIC, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
->>>>>>> origin/master
                                 </Style>
                             </DataGridComboBoxColumn.ElementStyle>
                         </DataGridComboBoxColumn>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Tx"      Header="Tx"           SelectedItemBinding="{Binding Tx,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       ElementStyle="{StaticResource StandardComboBox}" Width="50"/>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Rx"      Header="Rx"           SelectedItemBinding="{Binding Rx,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       ElementStyle="{StaticResource StandardComboBox}" Width="50"/>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Err"     Header="Err"          SelectedItemBinding="{Binding Err,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"      ElementStyle="{StaticResource StandardComboBox}" Width="50"/>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Control" Header="Control Type" SelectedItemBinding="{Binding Control,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  ElementStyle="{StaticResource StandardComboBox}" Width="85"/>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_EN"      Header="EN"           SelectedItemBinding="{Binding EN,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       ElementStyle="{StaticResource StandardComboBox}" Width="50"/>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_STN"     Header="STN"          SelectedItemBinding="{Binding STN,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"      ElementStyle="{StaticResource StandardComboBox}" Width="50"/>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_NM"      Header="NM Type"     SelectedItemBinding="{Binding Buadrate,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  ElementStyle="{StaticResource StandardComboBox}" Width="75"/>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_CanRate" Header="Buadrate"     SelectedItemBinding="{Binding Buadrate,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource StandardComboBox}" Width="75"/>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_NBT"      Header="NBT"     SelectedItemBinding="{Binding Buadrate}"  ElementStyle="{StaticResource StandardComboBox}" Width="60"/>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_SP"      Header="SP"     SelectedItemBinding="{Binding Buadrate}"  ElementStyle="{StaticResource StandardComboBox}" Width="60"/>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_SJW"      Header="SJW"     SelectedItemBinding="{Binding Buadrate}"  ElementStyle="{StaticResource StandardComboBox}" Width="60"/>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Tx" Header="Tx" SelectedItemBinding="{Binding Tx,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="63">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.PinConfig.PortNameList, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                        </DataGridComboBoxColumn>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Rx" Header="Rx" SelectedItemBinding="{Binding Rx,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="63">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.PinConfig.PortNameList, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                        </DataGridComboBoxColumn>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Err" Header="Err" SelectedItemBinding="{Binding Err,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="63">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.PinConfig.PortNameList, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                        </DataGridComboBoxColumn>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Control" Header="Control Type" SelectedItemBinding="{Binding Control,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="95">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.CanControllType, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                        </DataGridComboBoxColumn>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_EN" Header="EN" SelectedItemBinding="{Binding EN,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="63">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.PinConfig.PortNameList, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                        </DataGridComboBoxColumn>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_STN" Header="STN" SelectedItemBinding="{Binding STN,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="63">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.PinConfig.PortNameList, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                        </DataGridComboBoxColumn>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_NM" Header="NM Type" SelectedItemBinding="{Binding Buadrate,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="90">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.CanNmType, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                        </DataGridComboBoxColumn>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_CanRate" Header="Buadrate" SelectedItemBinding="{Binding Buadrate,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="65">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.CanRate, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                        </DataGridComboBoxColumn>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_NBT" Header="NBT" SelectedItemBinding="{Binding Buadrate}" Width="50">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.CanNBT, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                        </DataGridComboBoxColumn>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_SP" Header="SP" SelectedItemBinding="{Binding Buadrate}" Width="50">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.CanSP, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                        </DataGridComboBoxColumn>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_SJW" Header="SJW" SelectedItemBinding="{Binding Buadrate}" Width="50">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.CanSJW, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                        </DataGridComboBoxColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-
-
-
-
             </Grid>
         </GroupBox>
-        <GroupBox Header="ASW ASC" Margin="5,261,0,0">
+        <GroupBox Header="ASW ASC" Margin="5,261,5,0">
             <Grid>
                 <Label Content="Number of Usage ASW ASC channel" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top"/>
-                <ComboBox x:Name="ComboBox_AscNum" HorizontalAlignment="Left" Margin="215,0,0,0" VerticalAlignment="Top" Width="90" ItemsSource="{Binding AscChannelNum}" SelectionChanged="comboBox_SelectionChanged"/>
-                <DataGrid x:Name="DataGrid_ASC" HorizontalAlignment="Left" Margin="0,35,0,0" VerticalAlignment="Top" Height="177" Width="1000" BorderThickness="1" BorderBrush="LightGray" ItemsSource="{Binding AscConfig}" AutoGenerateColumns="False" ColumnHeaderStyle="{StaticResource SrsMakerDataGridColumnHeader}" CanUserDeleteRows="False" CanUserAddRows="False" CanUserSortColumns="False">
+                <ComboBox x:Name="ComboBox_AscNum" HorizontalAlignment="Left" Margin="215,0,0,0" VerticalAlignment="Top" Width="90" ItemsSource="{Binding AscChannelNum}" SelectionChanged="comboBox_Asc_SelectionChanged"/>
+                <DataGrid x:Name="DataGrid_ASC" HorizontalAlignment="Left" Margin="0,35,0,0" VerticalAlignment="Top" Height="126" Width="1000" BorderThickness="1" BorderBrush="LightGray" ItemsSource="{Binding AscConfig}" AutoGenerateColumns="False" ColumnHeaderStyle="{StaticResource SrsMakerDataGridColumnHeader}" CanUserDeleteRows="False" CanUserAddRows="False" CanUserSortColumns="False">
                     <DataGrid.Resources>
                         <local:RowToIndexConv x:Key="converter"/>
                     </DataGrid.Resources>
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn x:Name="DataGridComboBoxColumn_AscPhyCh" Header="Driver" Width="55" >
+                        <DataGridTemplateColumn x:Name="DataGridComboBoxColumn_AscDriverIndex" Header="Index" Width="55" >
                             <DataGridTemplateColumn.CellTemplate >
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Path=., RelativeSource={RelativeSource AncestorType=DataGridRow}, Converter={StaticResource converter}}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Usage"   Header="Usage" SelectedItemBinding="{Binding Usage,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="70">
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_AscPhy"     Header="Phy Channel"  SelectedItemBinding="{Binding AscPhysicalChannel,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80">
                             <DataGridComboBoxColumn.ElementStyle>
                                 <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
-                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.CanUsage, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.AscPhyChannel, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                        </DataGridComboBoxColumn>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_AscUsage"   Header="Usage" SelectedItemBinding="{Binding AscUsage,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="70">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.AscUsage, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
                                     <EventSetter Event="SelectionChanged" Handler="SomeSelectionChanged"/>
                                 </Style>
                             </DataGridComboBoxColumn.ElementStyle>
                         </DataGridComboBoxColumn>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Phy"     Header="Phy Channel"  SelectedItemBinding="{Binding Phy,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80">
+
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_AscLinRate"      Header="Lin Rate"           SelectedItemBinding="{Binding AscLinRate,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80">
                             <DataGridComboBoxColumn.ElementStyle>
                                 <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
-                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.CanPhysicalChannel, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.AscLinRate, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
                                 </Style>
                             </DataGridComboBoxColumn.ElementStyle>
                         </DataGridComboBoxColumn>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_IC"      Header="IC"           SelectedItemBinding="{Binding IC,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80">
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_AscLinEnPin"      Header="Lin EN Pin"           SelectedItemBinding="{Binding AscLinEnablePin,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80">
                             <DataGridComboBoxColumn.ElementStyle>
                                 <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
-                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.CanIC, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.PinConfig.PortNameList, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
                                 </Style>
                             </DataGridComboBoxColumn.ElementStyle>
                         </DataGridComboBoxColumn>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Tx"      Header="Tx"           SelectedItemBinding="{Binding Tx,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       ElementStyle="{StaticResource StandardComboBox}" Width="50"/>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Rx"      Header="Rx"           SelectedItemBinding="{Binding Rx,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       ElementStyle="{StaticResource StandardComboBox}" Width="50"/>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Err"     Header="Err"          SelectedItemBinding="{Binding Err,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"      ElementStyle="{StaticResource StandardComboBox}" Width="50"/>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Control" Header="Control Type" SelectedItemBinding="{Binding Control,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  ElementStyle="{StaticResource StandardComboBox}" Width="85"/>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_EN"      Header="EN"           SelectedItemBinding="{Binding EN,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"       ElementStyle="{StaticResource StandardComboBox}" Width="50"/>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_STN"     Header="STN"          SelectedItemBinding="{Binding STN,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"      ElementStyle="{StaticResource StandardComboBox}" Width="50"/>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_NM"      Header="NM Type"     SelectedItemBinding="{Binding Buadrate,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  ElementStyle="{StaticResource StandardComboBox}" Width="75"/>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_CanRate" Header="Buadrate"     SelectedItemBinding="{Binding Buadrate,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ElementStyle="{StaticResource StandardComboBox}" Width="75"/>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_NBT"      Header="NBT"     SelectedItemBinding="{Binding Buadrate}"  ElementStyle="{StaticResource StandardComboBox}" Width="60"/>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_SP"      Header="SP"     SelectedItemBinding="{Binding Buadrate}"  ElementStyle="{StaticResource StandardComboBox}" Width="60"/>
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_SJW"      Header="SJW"     SelectedItemBinding="{Binding Buadrate}"  ElementStyle="{StaticResource StandardComboBox}" Width="60"/>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_AscLinWakeupPin"      Header="Lin WU Pin"           SelectedItemBinding="{Binding AscLinWakeUpPin,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
+                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.PinConfig.PortNameList, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                        </DataGridComboBoxColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-                
+
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="ASW SPI" Margin="10,463,0,0">
+            <Grid>
+
+                <Label Content="Number of ASW SPI Job" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                <ComboBox x:Name="ComboBox_SpiNum" HorizontalAlignment="Left" Margin="149,0,0,0" VerticalAlignment="Top" Width="90" ItemsSource="{Binding SpiJoblNum}" SelectionChanged="comboBox_SelectionChanged"/>
+                <DataGrid x:Name="DataGrid_SPI" HorizontalAlignment="Left" Margin="0,35,0,0" VerticalAlignment="Top" Height="219" Width="1000" BorderThickness="1" BorderBrush="LightGray" ItemsSource="{Binding SpiConfig}" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserSortColumns="False" Grid.ColumnSpan="2">
+                    <DataGrid.Resources>
+                        <local:RowToIndexConv x:Key="converter"/>
+                    </DataGrid.Resources>
+                    <DataGrid.ColumnHeaderStyle>
+                        <StaticResource ResourceKey="SrsMakerDataGridColumnHeader"/>
+                    </DataGrid.ColumnHeaderStyle>
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn x:Name="DataGridComboBoxColumn_SpiDriverIndex" Header="Index" Width="55" >
+                            <DataGridTemplateColumn.CellTemplate >
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ., Converter={StaticResource converter}, RelativeSource={RelativeSource AncestorType={x:Type DataGridRow}}}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_SpiPhy" Header="Phy Channel"  SelectedItemBinding="{Binding SpiPhysicalChannel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
+                                    <Setter Property="ItemsSource" Value="{Binding DataContext.AscPhyChannel, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                        </DataGridComboBoxColumn>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_AscUsage1"   Header="Usage" SelectedItemBinding="{Binding AscUsage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="70">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
+                                    <Setter Property="ItemsSource" Value="{Binding DataContext.AscUsage, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                    <EventSetter Event="Selector.SelectionChanged" Handler="SomeSelectionChanged"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                        </DataGridComboBoxColumn>
+
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_AscLinRate1"      Header="Lin Rate"           SelectedItemBinding="{Binding AscLinRate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
+                                    <Setter Property="ItemsSource" Value="{Binding DataContext.AscLinRate, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                        </DataGridComboBoxColumn>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_AscLinEnPin1"      Header="Lin EN Pin"           SelectedItemBinding="{Binding AscLinEnablePin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
+                                    <Setter Property="ItemsSource" Value="{Binding DataContext.PinConfig.PortNameList, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                        </DataGridComboBoxColumn>
+                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_AscLinWakeupPin1"      Header="Lin WU Pin"           SelectedItemBinding="{Binding AscLinWakeUpPin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80">
+                            <DataGridComboBoxColumn.ElementStyle>
+                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
+                                    <Setter Property="ItemsSource" Value="{Binding DataContext.PinConfig.PortNameList, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+                                </Style>
+                            </DataGridComboBoxColumn.ElementStyle>
+                        </DataGridComboBoxColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
             </Grid>
         </GroupBox>
 

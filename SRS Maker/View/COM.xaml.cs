@@ -24,24 +24,42 @@ namespace SRS_Maker.View
     {
         public Pins PinConfig { get; set; }
 
-        List<Item> items = new List<Item>();
-
         public ObservableCollection<Can> CanConfig { get; set; }
-
+        public ObservableCollection<string> CanChannelNum { get; set; }
+        public ObservableCollection<string> CanClock { get; set; }
         public ObservableCollection<int> CanPhysicalChannel { get; set; }
         public ObservableCollection<string> CanUsage { get; set; }
         public ObservableCollection<string> CanIC { get; set; }
-
-        public ObservableCollection<string> CanChannelNum { get; set; }
-        public ObservableCollection<string> CanClock { get; set; }
-
+        public ObservableCollection<string> CanControllType { get; set; }
+        public ObservableCollection<string> CanNmType { get; set; }
+        public ObservableCollection<string> CanRate { get; set; }
+        public ObservableCollection<int> CanNBT { get; set; }
+        public ObservableCollection<int> CanSP { get; set; }
+        public ObservableCollection<int> CanSJW { get; set; }
+                
+        public ObservableCollection<Asc> AscConfig { get; set; }
         public ObservableCollection<string> AscChannelNum { get; set; }
+        public ObservableCollection<string> AscPhyChannel { get; set; }
+        public ObservableCollection<string> AscUsage { get; set; }
+        public ObservableCollection<string> AscLinRate { get; set; }
 
         public COM()
         {
             DataContext = this;
-            
+
             CanConfig = new ObservableCollection<Can>();
+
+            CanChannelNum = new ObservableCollection<string>();
+            CanChannelNum.Add("NO USE");
+            CanChannelNum.Add("1");
+            CanChannelNum.Add("2");
+            CanChannelNum.Add("3");
+            CanChannelNum.Add("4");
+            CanChannelNum.Add("5");
+
+            CanClock = new ObservableCollection<string>();
+            CanClock.Add("Oscilator");
+            CanClock.Add("Periperal");
 
             CanPhysicalChannel = new ObservableCollection<int>();
             CanPhysicalChannel.Add(1);
@@ -64,31 +82,78 @@ namespace SRS_Maker.View
             CanIC.Add("TLE6250");
             CanIC.Add("TLE6254");
 
-            CanChannelNum = new ObservableCollection<string>();
-            CanChannelNum.Add("NO USE");
-            CanChannelNum.Add("1");
-            CanChannelNum.Add("2");
-            CanChannelNum.Add("3");
-            CanChannelNum.Add("4");
-            CanChannelNum.Add("5");
+            CanControllType = new ObservableCollection<string>();
+            CanControllType.Add("1Pin Auto");
+            CanControllType.Add("2Pin Auto");
+            CanControllType.Add("Manual");
 
-            CanClock = new ObservableCollection<string>();
-            CanClock.Add("Oscilator");
-            CanClock.Add("Periperal");
+            CanNmType = new ObservableCollection<string>();
+            CanNmType.Add("NM OSEK");
+            CanNmType.Add("NM BASIC");
+
+            CanRate = new ObservableCollection<string>();
+            CanRate.Add("100K");
+            CanRate.Add("125K");
+            CanRate.Add("500K");
+
+            CanNBT = new ObservableCollection<int>();
+            CanNBT.Add(10);
+            CanNBT.Add(11);
+            CanNBT.Add(12);
+            CanNBT.Add(13);
+            CanNBT.Add(14);
+            CanNBT.Add(15);
+            CanNBT.Add(16);
+            CanNBT.Add(17);
+            CanNBT.Add(18);
+            CanNBT.Add(19);
+            CanNBT.Add(20);
+            CanNBT.Add(21);
+            CanNBT.Add(22);
+            CanNBT.Add(23);
+            CanNBT.Add(24);
+
+            CanSP = new ObservableCollection<int>();
+            CanSP.Add(75);
+            CanSP.Add(76);
+            CanSP.Add(77);
+            CanSP.Add(78);
+            CanSP.Add(79);
+            CanSP.Add(80);
+            CanSP.Add(81);
+            CanSP.Add(82);
+
+            CanSJW = new ObservableCollection<int>();
+            CanSJW.Add(2);
+            CanSJW.Add(3);
+
+            AscConfig = new ObservableCollection<Asc>();
 
             AscChannelNum = new ObservableCollection<string>();
-            AscChannelNum.Add("No Use");
+            AscChannelNum.Add("NO USE");
             AscChannelNum.Add("1");
             AscChannelNum.Add("2");
             AscChannelNum.Add("3");
             AscChannelNum.Add("4");
 
+            AscPhyChannel = new ObservableCollection<string>();
+            AscPhyChannel.Add("1");
+            AscPhyChannel.Add("2");
+            AscPhyChannel.Add("3");
+            AscPhyChannel.Add("4");
 
+            AscUsage = new ObservableCollection<string>();
+            AscUsage.Add("User");
+            AscUsage.Add("LIN");
+
+            AscLinRate = new ObservableCollection<string>();
+            AscLinRate.Add("9600");
+            AscLinRate.Add("19200");
+            AscLinRate.Add("38400");
+            AscLinRate.Add("57600");
+            AscLinRate.Add("115200");
 
             InitializeComponent();
-
-            
-
         }
 
         private void SomeSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -102,39 +167,43 @@ namespace SRS_Maker.View
 
             if (comboBox.SelectedIndex > CanConfig.Count)
             {
-                int LoopNum = comboBox.SelectedIndex - CanConfig.Count;
-
-                for(int i = 0; i < LoopNum; i++)
+                int LoopCount = comboBox.SelectedIndex - CanConfig.Count;
+                for (int i = 0; i < LoopCount; i++)
                 {
                     CanConfig.Add(new Can());
                 }
             }
             else
             {
-                int LoopNum = CanConfig.Count - comboBox.SelectedIndex;
-
-                for (int i = 0; i < LoopNum; i++)
+                int LoopCount = CanConfig.Count - comboBox.SelectedIndex;
+                for (int i = 0; i < LoopCount; i++)
                 {
                     CanConfig.RemoveAt(CanConfig.Count-1);
                 }
             }
         }
-        void test(object sender, EventArgs e)
-        {
-         
-        }
 
-        private void TextBlock_Loaded(object sender, RoutedEventArgs e)
+        private void comboBox_Asc_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var block = sender as TextBlock;
-            var item = block.Tag as Item;
-            block.Text = items.IndexOf(item).ToString();
+            var comboBox = sender as ComboBox;
+            
+            if (comboBox.SelectedIndex > AscConfig.Count)
+            {
+                int LoopCount = comboBox.SelectedIndex - AscConfig.Count;
+                for (int i = 0; i < LoopCount; i++)
+                {
+                    AscConfig.Add(new Asc());
+                }
+            }
+            else
+            {
+                int LoopCount = AscConfig.Count - comboBox.SelectedIndex;
+                for (int i = 0; i < LoopCount; i++)
+                {
+                    AscConfig.RemoveAt(AscConfig.Count - 1);
+                }
+            }
         }
-    }
-
-    public class Item
-    {
-        public string Name { get; set; }
     }
 
     internal class RowToIndexConv : IValueConverter
@@ -144,23 +213,13 @@ namespace SRS_Maker.View
             DataGridRow row = value as DataGridRow;
             if (row == null)
                 throw new InvalidOperationException("This converter class can only be used with DataGridRow elements.");
-
-            if (row.DataContext.ToString() == "{NewItemPlaceholder}")
-            {
-                return null;
-            }
-            else
-            {
-                int driverNum = row.GetIndex() + 1;
-                return driverNum;
-            }
+            int driverNum = row.GetIndex() + 1;
+            return driverNum;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return null;
-            
         }
     }
-
 }
