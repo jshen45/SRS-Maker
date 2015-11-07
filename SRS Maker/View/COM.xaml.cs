@@ -26,12 +26,14 @@ namespace SRS_Maker.View
 
         public ObservableCollection<Can> CanConfig { get; set; }
 
+        public ObservableCollection<string> CanChannelNum { get; set; }
+        public ObservableCollection<string> CanClock { get; set; }
+
         public ObservableCollection<int> CanPhysicalChannel { get; set; }
         public ObservableCollection<string> CanUsage { get; set; }
         public ObservableCollection<string> CanIC { get; set; }
 
-        public ObservableCollection<string> CanChannelNum { get; set; }
-        public ObservableCollection<string> CanClock { get; set; }
+        public ObservableCollection<Asc> AscConfig { get; set; }
 
         public ObservableCollection<string> AscChannelNum { get; set; }
 
