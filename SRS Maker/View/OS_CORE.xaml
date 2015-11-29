@@ -51,7 +51,7 @@
                 <Label Content="Trigger Pin" HorizontalAlignment="Left" Margin="309,27,0,0" VerticalAlignment="Top" />
                 <Label Content="Time-Out(ms)" HorizontalAlignment="Left" Margin="150,27,0,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="TextBox_ExternalWatchDogTimeOut" HorizontalAlignment="Left" Height="23" Margin="237,27,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="70" IsEnabled="False"/>
-                <ComboBox x:Name="ExternalWatchdogTogglePin" HorizontalAlignment="Left" Margin="379,27,0,0" VerticalAlignment="Top" Width="99" IsEnabled="False" DropDownOpened="ComboBox_DropDownOpened"/>
+                <ComboBox x:Name="ExternalWatchdogTogglePin" HorizontalAlignment="Left" Margin="379,27,0,0" VerticalAlignment="Top" Width="99" IsEnabled="False" DropDownOpened="ExternalWatchdogTogglePin_DropDownOpened" SelectionChanged="ExternalWatchdogTogglePin_SelectionChanged"/>
             </Grid>
         </GroupBox>
 

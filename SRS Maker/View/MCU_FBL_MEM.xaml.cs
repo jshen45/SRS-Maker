@@ -16,7 +16,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
+
 using SRS_Maker.Data;
 
 namespace SRS_Maker.View
@@ -79,9 +81,18 @@ namespace SRS_Maker.View
             }
         }
 
-        private void RadioBtn_ExternalE2PRom_Checked(object sender, RoutedEventArgs e)
+        private async void RadioBtn_ExternalE2PRom_Checked(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Not supported yet.");
+
+
+            // This demo runs on .Net 4.0, but we're using the Microsoft.Bcl.Async package so we have async/await support
+            // The package is only used by the demo and not a dependency of the library!
+            var mySettings = new MetroDialogSettings()
+            {
+                AffirmativeButtonText = "OK",
+            };
+            
+            MessageDialogResult result = await DialogManager.ShowMessageAsync((MetroWindow)Window.GetWindow(this), "External EEPROM setting!", "Not supported yet in SRS Maker.\nSRS Marker에서 아직 정식지원되지 않는 기능입니다.", MessageDialogStyle.AffirmativeAndNegativeAndSingleAuxiliary, mySettings);
 
             RadioButton_InternalEEPRom.IsChecked = true;
         }

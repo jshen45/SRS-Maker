@@ -38,13 +38,25 @@ namespace SRS_Maker.View
             SwpTaskList = PlatformTasksData.SwpTaskList;
         }
 
-        private void ComboBox_DropDownOpened(object sender, EventArgs e)
+        private void ExternalWatchdogTogglePin_DropDownOpened(object sender, EventArgs e)
         {
-            if (ExternalWatchdogTogglePin.ItemsSource == null)
-            {
-                ExternalWatchdogTogglePin.ItemsSource = PinConfig.PortNameList;
-            }
+            ExternalWatchdogTogglePin.ItemsSource = PinConfig.PinList.Where((Pin p) => ((p.SelectedUsage == null) || (p.SelectedUsage.Contains("") || (p.SelectedUsage.Contains("ExternalWatchdogTooglePin"))))).Select((Pin p) => p.Name).ToList();
         }
+
+        private void ExternalWatchdogTogglePin_SelectionChanged(object sender, EventArgs e)
+        {
+            if (ExternalWatchdogTogglePin.SelectionBoxItem != null)
+            {
+                int oldIndex = PinConfig.PinList.FindIndex((Pin p) => p.Name.Equals(ExternalWatchdogTogglePin.SelectionBoxItem));
+                PinConfig.PinList[oldIndex].SelectedUsage = null;
+                PinConfig.PinList[oldIndex].SelectedUsageArea = null;
+            }
+            int newIndex = PinConfig.PinList.FindIndex((Pin p) => p.Name.Equals(ExternalWatchdogTogglePin.SelectedValue));
+            PinConfig.PinList[newIndex].SelectedUsage = "ExternalWatchdogTooglePin";
+            PinConfig.PinList[newIndex].SelectedUsageArea = PinUseArea.SWP;
+        }
+
+
 
         private void CheckBox_InternalWatchDog_Checked(object sender, RoutedEventArgs e)
         {
@@ -64,7 +76,7 @@ namespace SRS_Maker.View
             TextBox_ExternalWatchDogTimeOut.Text = "";
             TextBox_ExternalWatchDogTimeOut.IsEnabled = false;
             
-            ExternalWatchdogTogglePin.SelectedIndex = -1;
+            ExternalWatchdogTogglePin.SelectedValue = null;
             ExternalWatchdogTogglePin.IsEnabled = false;
         }
 
