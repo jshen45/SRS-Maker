@@ -1,20 +1,10 @@
 ﻿using SRS_Maker.Data;
 using SRS_Maker.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace SRS_Maker.View
 {
@@ -48,12 +38,15 @@ namespace SRS_Maker.View
             if (ExternalWatchdogTogglePin.SelectionBoxItem != null)
             {
                 int oldIndex = PinConfig.PinList.FindIndex((Pin p) => p.Name.Equals(ExternalWatchdogTogglePin.SelectionBoxItem));
-                PinConfig.PinList[oldIndex].SelectedUsage = null;
-                PinConfig.PinList[oldIndex].SelectedUsageArea = null;
+                if (oldIndex != -1)
+                {
+                    PinConfig.PinList[oldIndex].SelectedUsage = null;
+                    PinConfig.PinList[oldIndex].SelectedUsageArea = null;
+                }
             }
             int newIndex = PinConfig.PinList.FindIndex((Pin p) => p.Name.Equals(ExternalWatchdogTogglePin.SelectedValue));
             PinConfig.PinList[newIndex].SelectedUsage = "ExternalWatchdogTooglePin";
-            PinConfig.PinList[newIndex].SelectedUsageArea = PinUseArea.SWP;
+            PinConfig.PinList[newIndex].SelectedUsageArea = PinUseArea.SWP_ExtWtd;
         }
 
 

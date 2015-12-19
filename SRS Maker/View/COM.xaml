@@ -70,6 +70,14 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
+                        
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                               
+                            
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
                         <!--
                         <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Usage" Header="Usage" SelectedItemBinding="{Binding Usage,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="67">
                             <DataGridComboBoxColumn.ElementStyle>

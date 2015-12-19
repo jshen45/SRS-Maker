@@ -9,7 +9,16 @@ namespace SRS_Maker.Model
 {
     public enum PinUseArea
     {
-        SWP,ASW
+        ASW,
+        SWP_ExtWtd,
+        SWP_CanRx,
+        SWP_CanTx,
+        SWP_CanEn,
+        SWP_CanStb,
+        SWP_SpiTx,
+        SWP_SpiRx,
+        SWP_SpiClk,
+        SWP_SpiCs
     }
 
     public class Pin
