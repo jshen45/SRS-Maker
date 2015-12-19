@@ -29,7 +29,7 @@
                 <ComboBox x:Name="ComboBox_CanNum" HorizontalAlignment="Left" Margin="188,0,0,0" VerticalAlignment="Top" Width="90" ItemsSource="{Binding CanChannelNum}" SelectionChanged="comboBox_SelectionChanged"/>
                 <Label Content="Associated Clock" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="283,0,0,0"/>
                 <ComboBox x:Name="ComboBox_CanClock" HorizontalAlignment="Left" Margin="390,0,0,0" VerticalAlignment="Top" Width="100" ItemsSource="{Binding CanClock}"/>
-                <DataGrid x:Name="DataGrid_CAN" HorizontalAlignment="Left" Margin="0,35,0,0" VerticalAlignment="Top" Height="177" Width="1000" BorderThickness="1" BorderBrush="LightGray" ItemsSource="{Binding CanConfig}" AutoGenerateColumns="False" ColumnHeaderStyle="{StaticResource SrsMakerDataGridColumnHeader}" CanUserDeleteRows="False" CanUserAddRows="False" CanUserSortColumns="False" CellEditEnding="DataGrid_CAN_CellEditEnding" RowEditEnding="DataGrid_CAN_RowEditEnding" SelectedCellsChanged="DataGrid_CAN_SelectedCellsChanged" CurrentCellChanged="DataGrid_CAN_CurrentCellChanged" >
+                <DataGrid x:Name="DataGrid_CAN" HorizontalAlignment="Left" Margin="0,35,0,0" VerticalAlignment="Top" Height="177" Width="1000" BorderThickness="1" BorderBrush="LightGray" ItemsSource="{Binding CanConfig}" AutoGenerateColumns="False" ColumnHeaderStyle="{StaticResource SrsMakerDataGridColumnHeader}" CanUserDeleteRows="False" CanUserAddRows="False" CanUserSortColumns="False">
                     <DataGrid.Resources>
                         <local:RowToIndexConv x:Key="converter"/>
                         <local:TestConverter x:Key="testconverter"/>  
@@ -54,7 +54,7 @@
                         <DataGridTemplateColumn  Header="NUsage"  Width="67">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <ComboBox x:Name="DataGridComboBoxColumn_NewUsage" Style="{StaticResource StandardComboBox}" SelectionChanged="ComboBox_SelectionChanged_1" >
+                                    <ComboBox x:Name="DataGridComboBoxColumn_NewUsage" Style="{StaticResource StandardComboBox}" SelectionChanged="DataGridComboBoxColumn_NewUsage_SelectionChanged" >
                                         <ComboBox.SelectedValue>
                                             <Binding Path="Usage" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" />
                                         </ComboBox.SelectedValue>
@@ -73,6 +73,16 @@
                         
                         <DataGridTemplateColumn>
                             <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox x:Name="DataGridComboBoxColumn_Phy" Style="{StaticResource StandardComboBox}" SelectionChanged="DataGridComboBoxColumn_Phy_SelectionChanged" ItemsSource="{Binding Path=DataContext.CanPhysicalChannel, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
+                                        <ComboBox.SelectedItem>
+                                            <Binding>
+                                                
+                                            </Binding>
+                                        </ComboBox.SelectedItem>
+                                    </ComboBox>
+                                </DataTemplate>
+
                                
                             
                             </DataGridTemplateColumn.CellTemplate>

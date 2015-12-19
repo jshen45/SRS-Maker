@@ -9,8 +9,8 @@ namespace SRS_Maker.Model
 {
     public class Can
     {
-        public int Driver { get; set; }
-        public int Phy { get; set; }
+        public int? Driver { get; set; }
+        public int? Phy { get; set; }
 		public string Usage { get; set; }
 		public string IC { get; set; }
 		public string Tx { get; set; }

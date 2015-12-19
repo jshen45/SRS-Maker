@@ -9,8 +9,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using SRS_Maker;
 using SRS_Maker.Data;
 using SRS_Maker.Model;
+using SRS_Maker.View;
 using System;
 using System.Diagnostics;
 using System.Windows;
