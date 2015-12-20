@@ -12,9 +12,9 @@ DEBUG;TRACE
 C:\Users\Minu\Documents\GitHub\SRS-Maker\SRS Maker\App.xaml
 8961251880
 
-26-93202139
+22883077495
 18214543753
 MainWindow.xaml;Resources\Icons.xaml;View\CAN_UDS_SPI_ASC.xaml;View\COM.xaml;View\IO.xaml;View\MCU_FBL_MEM.xaml;View\OS_CORE.xaml;View\PROJECT.xaml;
 
-True
+False
 

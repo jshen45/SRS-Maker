@@ -11,14 +11,8 @@ namespace SRS_Maker.Model
     {
         ASW,
         SWP_ExtWtd,
-        SWP_CanRx,
-        SWP_CanTx,
         SWP_CanEn,
-        SWP_CanStb,
-        SWP_SpiTx,
-        SWP_SpiRx,
-        SWP_SpiClk,
-        SWP_SpiCs
+        SWP_CanStb
     }
 
     public class Pin

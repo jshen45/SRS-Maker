@@ -54,7 +54,7 @@
                         <DataGridTemplateColumn  Header="NUsage"  Width="67">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <ComboBox x:Name="DataGridComboBoxColumn_NewUsage" Style="{StaticResource StandardComboBox}" SelectionChanged="DataGridComboBoxColumn_NewUsage_SelectionChanged" >
+                                    <ComboBox x:Name="DataGridComboBoxColumn_NewUsage" Style="{StaticResource StandardComboBox}" SelectionChanged="DataGridComboBoxColumn_DupulicationCheck" >
                                         <ComboBox.SelectedValue>
                                             <Binding Path="Usage" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" />
                                         </ComboBox.SelectedValue>
@@ -70,53 +70,18 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        
-                        <DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="Phy Ch">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <ComboBox x:Name="DataGridComboBoxColumn_Phy" Style="{StaticResource StandardComboBox}" SelectionChanged="DataGridComboBoxColumn_Phy_SelectionChanged" ItemsSource="{Binding Path=DataContext.CanPhysicalChannel, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
-                                        <ComboBox.SelectedItem>
-                                            <Binding>
-                                                
-                                            </Binding>
-                                        </ComboBox.SelectedItem>
+                                    <ComboBox x:Name="DataGridComboBoxColumn_Phy" Style="{StaticResource StandardComboBox}" SelectionChanged="DataGridComboBoxColumn_DupulicationCheck" ItemsSource="{Binding Path=DataContext.CanPhysicalChannel, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
+                                        <ComboBox.SelectedValue>
+                                            <Binding Path="Phy" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" />
+                                        </ComboBox.SelectedValue>
                                     </ComboBox>
                                 </DataTemplate>
-
-                               
-                            
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-
-                        <!--
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Usage" Header="Usage" SelectedItemBinding="{Binding Usage,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="67">
-                            <DataGridComboBoxColumn.ElementStyle>
-                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">-->
-                                    <!--<Setter Property="ItemsSource" Value="{Binding Path=DataContext.CanUsage, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>-->
-                                    <!--<Setter Property="ItemsSource" Value="{Binding Path=., RelativeSource={RelativeSource AncestorType=DataGridRow}, Converter={StaticResource testconverter}}"/>-->
-                                    <!--
-                                    <Setter Property="ItemsSource">
-                                        <Setter.Value>
-                                            <MultiBinding Converter="{StaticResource testconverter}" NotifyOnSourceUpdated="True">
-                                                <MultiBinding.Bindings>
-                                                    <Binding Path="." RelativeSource="{RelativeSource AncestorType=DataGridRow}" />
-                                                    <Binding Path="DataContext.CanConfig" RelativeSource="{RelativeSource AncestorType=UserControl}" />
-                                                </MultiBinding.Bindings>
-                                            </MultiBinding>
-                                        </Setter.Value>
-                                    </Setter>
-                                    
-                                </Style>
-                            </DataGridComboBoxColumn.ElementStyle>
-                        </DataGridComboBoxColumn>
-                        -->
-                        <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_Phy" Header="Phy Channel" SelectedItemBinding="{Binding Phy,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80">
-                            <DataGridComboBoxColumn.ElementStyle>
-                                <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">
-                                    <Setter Property="ItemsSource" Value="{Binding Path=DataContext.CanPhysicalChannel, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
-                                </Style>
-                            </DataGridComboBoxColumn.ElementStyle>
-                        </DataGridComboBoxColumn>
                         <DataGridComboBoxColumn x:Name="DataGridComboBoxColumn_IC" Header="IC" SelectedItemBinding="{Binding IC,  Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="80">
                             <DataGridComboBoxColumn.ElementStyle>
                                 <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource StandardComboBox}">

@@ -207,7 +207,7 @@ namespace SRS_Maker.View
             }
         }
 
-        private async void DataGridComboBoxColumn_NewUsage_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void DataGridComboBoxColumn_DupulicationCheck(object sender, SelectionChangedEventArgs e)
         {
             ComboBox ComboboxObj = sender as ComboBox;
             Can TargetCanObj = ComboboxObj.DataContext as Can;
@@ -217,33 +217,31 @@ namespace SRS_Maker.View
                 Can RefCanObj = Obj.Value as Can;
                 int RefCanObjIndex = Obj.Index;
                 
-                if (RefCanObjIndex != (TargetCanObj.Driver - 1) && RefCanObj.Usage == TargetCanObj.Usage && TargetCanObj.Usage != null)
+                if (RefCanObjIndex != (TargetCanObj.Driver - 1)) 
                 {
-                    MessageDialogResult result = await DialogManager.ShowMessageAsync((MetroWindow)Window.GetWindow(this), "External EEPROM setting!", "Not supported yet in SRS Maker.\nSRS Marker에서 아직 정식지원되지 않는 기능입니다.");
+                    switch(ComboboxObj.Name)
+                    {
+                        case "DataGridComboBoxColumn_NewUsage":
+                            if (RefCanObj.Usage == TargetCanObj.Usage && TargetCanObj.Usage != null)
+                            {
+                                MessageDialogResult result = await DialogManager.ShowMessageAsync((MetroWindow)Window.GetWindow(this), "External EEPROM setting!", "Not supported yet in SRS Maker.\nSRS Marker에서 아직 정식지원되지 않는 기능입니다.");
+                            }    
+                            break;
+                        case "DataGridComboBoxColumn_Phy":
+                            if (RefCanObj.Phy == TargetCanObj.Phy && TargetCanObj.Phy != null)
+                            {
+                                MessageDialogResult result = await DialogManager.ShowMessageAsync((MetroWindow)Window.GetWindow(this), "External EEPROM setting!", "Not supported yet in SRS Maker.\nSRS Marker에서 아직 정식지원되지 않는 기능입니다.");
+                            }
+                            break;
+                    }
+                    
                     ComboboxObj.SelectedValue = null;
                     break;
                 }
             }
         }
 
-        private async void DataGridComboBoxColumn_Phy_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ComboBox ComboboxObj = sender as ComboBox;
-            Can TargetCanObj = ComboboxObj.DataContext as Can;
-            
-            foreach (var Obj in this.CanConfig.Select((x, i) => new { Value = x, Index = i }))
-            {
-                Can RefCanObj = Obj.Value as Can;
-                int RefCanObjIndex = Obj.Index;
-                
-                if (RefCanObjIndex != (TargetCanObj.Driver - 1) && RefCanObj.Phy == TargetCanObj.Phy && TargetCanObj.Phy != null)
-                {
-                    MessageDialogResult result = await DialogManager.ShowMessageAsync((MetroWindow)Window.GetWindow(this), "External EEPROM setting!", "Not supported yet in SRS Maker.\nSRS Marker에서 아직 정식지원되지 않는 기능입니다.");
-                    ComboboxObj.SelectedValue = null;
-                    break;
-                }
-            }
-        }
+        
     }
 
     internal class RowToIndexConv : IMultiValueConverter

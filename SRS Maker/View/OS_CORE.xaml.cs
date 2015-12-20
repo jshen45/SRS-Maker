@@ -35,18 +35,24 @@ namespace SRS_Maker.View
 
         private void ExternalWatchdogTogglePin_SelectionChanged(object sender, EventArgs e)
         {
-            if (ExternalWatchdogTogglePin.SelectionBoxItem != null)
+            
+            int oldIndex = PinConfig.PinList.FindIndex((Pin p) => p.Name.Equals(ExternalWatchdogTogglePin.SelectionBoxItem));
+            int newIndex = PinConfig.PinList.FindIndex((Pin p) => p.Name.Equals(ExternalWatchdogTogglePin.SelectedValue));
+
+            if (PinConfig.PinList[newIndex].SelectedUsage == null)
             {
-                int oldIndex = PinConfig.PinList.FindIndex((Pin p) => p.Name.Equals(ExternalWatchdogTogglePin.SelectionBoxItem));
                 if (oldIndex != -1)
                 {
                     PinConfig.PinList[oldIndex].SelectedUsage = null;
                     PinConfig.PinList[oldIndex].SelectedUsageArea = null;
                 }
+                PinConfig.PinList[newIndex].SelectedUsage = "ExternalWatchdogTooglePin";
+                PinConfig.PinList[newIndex].SelectedUsageArea = PinUseArea.SWP_ExtWtd;
             }
-            int newIndex = PinConfig.PinList.FindIndex((Pin p) => p.Name.Equals(ExternalWatchdogTogglePin.SelectedValue));
-            PinConfig.PinList[newIndex].SelectedUsage = "ExternalWatchdogTooglePin";
-            PinConfig.PinList[newIndex].SelectedUsageArea = PinUseArea.SWP_ExtWtd;
+            else
+            {
+                // Pop up invliad Config ERR-MSG
+            }
         }
 
 
